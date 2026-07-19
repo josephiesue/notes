@@ -8,10 +8,10 @@ const featured = notes.find(note => note.data.featured) ?? notes[0];
 const recent = notes.filter(note => note.id !== featured?.id).slice(0, 4);
 const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
 const fourYeses = [
-  { title: 'Yes to reality', copy: 'Begin with what is.' },
-  { title: 'Yes to responsibility', copy: 'Choose what is yours to carry.' },
-  { title: 'Yes to service', copy: 'Spend strength where it helps.' },
-  { title: 'Yes to the path', copy: 'Keep walking; keep learning.' },
+  { title: 'The Mirror', copy: 'Develops the self.' },
+  { title: 'The Weight', copy: 'Puts strength to service.' },
+  { title: 'The Ground', copy: 'Shapes growth.' },
+  { title: 'The Path', copy: 'Keeps the journey your own.' },
 ];
 ---
 <BaseLayout title="The Yes-Way">
