@@ -486,12 +486,12 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
 }
 .four-yeses > header p { margin-top:12px; color:#dfd2bf; font-size:1.2rem; }
 .yes-compass {
-  width:min(920px,67vw);
+  width:min(830px,67vw,calc(23.7vw + 434px));
   min-height:390px;
   margin:4px 0 0 auto;
   display:grid;
   grid-template:1fr 1fr / 1fr 1fr;
-  column-gap:260px;
+  column-gap:clamp(180px,18vw,260px);
   row-gap:95px;
 }
 .yes {
@@ -611,7 +611,7 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
 .footer-legal span:last-child { display:none; }
 
 @media (max-width:1100px) {
-  .yes-compass { width:720px; column-gap:180px; }
+  .yes-compass { column-gap:180px; }
   .recent-iesues { grid-template-columns:280px 1fr; gap:35px; }
   .recent-iesues li > a { grid-template-columns:28px 1fr 110px 30px; }
   .list-topic { display:none; }
@@ -624,7 +624,11 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
     background-position:center top;
   }
   .opening-field { background-image:url('/images/yes-way-opening-mobile.webp'); }
-  .principles-field { background-image:url('/images/yes-way-principles-mobile.webp'); }
+  .principles-field {
+    background-image:url('/images/yes-way-principles-mobile.webp');
+    background-size:auto 1672px;
+    background-position:center top;
+  }
   .yes-hero {
     width:100%;
     min-height:820px;
@@ -644,20 +648,23 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
   .edition-copy h2 { font-size:2.3rem; }
   .four-yeses {
     width:100%;
-    min-height:940px;
+    min-height:850px;
     padding:70px 28px;
   }
   .four-yeses > header { position:relative; top:auto; text-align:center; }
   .yes-compass {
-    width:min(560px,100%);
-    min-height:680px;
-    margin:250px auto 0;
+    width:min(620px,100%);
+    min-height:0;
+    margin:92px auto 0;
     display:grid;
-    grid-template-columns:1fr;
-    gap:0;
+    grid-template:110px 110px / 1fr 1fr;
+    column-gap:clamp(16px,5vw,40px);
+    row-gap:120px;
   }
-  .yes { padding:20px 24px 20px 34px; border-left:1px solid rgba(205,151,54,.68); }
-  .yes::before { content:''; position:absolute; left:-5px; top:50%; width:9px; height:9px; border:1px solid #d3a13e; background:#020811; transform:rotate(45deg); }
+  .yes { align-self:center; padding:10px 6px; border:0; }
+  .yes::before { display:none; }
+  .yes-1,.yes-3 { text-align:right; }
+  .yes-2,.yes-4 { text-align:left; }
   .recent-iesues {
     width:calc(100% - 52px);
     min-height:520px;
@@ -698,12 +705,17 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
   .edition-number { display:flex; }
   .edition-rule { display:none; }
   .edition-copy h2 { font-size:2.15rem; }
-  .four-yeses { min-height:1010px; padding:62px 18px; }
+  .four-yeses { min-height:820px; padding:62px 18px; }
   .four-yeses > header h2 { font-size:2.35rem; }
-  .yes-compass { min-height:690px; margin-top:250px; }
-  .yes { padding:18px 16px 18px 28px; }
-  .yes h3 { font-size:.84rem; }
-  .yes p { font-size:.95rem; }
+  .yes-compass {
+    margin-top:92px;
+    grid-template-rows:105px 105px;
+    column-gap:16px;
+    row-gap:120px;
+  }
+  .yes { padding:8px 2px; }
+  .yes h3 { font-size:.74rem; letter-spacing:.1em; }
+  .yes p { font-size:.9rem; line-height:1.35; }
   .recent-iesues { width:calc(100% - 34px); min-height:480px; padding-top:50px; }
   .recent-heading h2 { font-size:2.35rem; }
   .recent-iesues li > a { grid-template-columns:minmax(0,1fr) 30px; }
