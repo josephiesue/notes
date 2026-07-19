@@ -6,6 +6,17 @@ format: iesue
 iesue: 1
 topic: Leadership
 tags: [the weight, service, leadership, agency, boundaries, servant leadership]
+outline:
+  - label: Private discipline
+    id: private-discipline-public-consequences
+  - label: A demanding resemblance
+    id: a-demanding-family-resemblance
+  - label: The service reversal
+    id: the-service-reversal
+  - label: The shadow of service
+    id: the-shadow-of-service
+  - label: A practice
+    id: a-practice-ask-before-you-carry
 featured: true
 ---
 
@@ -99,6 +110,15 @@ The last word matters most. Boundaries.
 
 Service has a shadow because moral language can disguise unhealthy arrangements.
 
+<aside class="cultural-mirror" aria-labelledby="cultural-mirror-title">
+  <p class="callout-kicker">Cultural mirror</p>
+  <div>
+    <h3 id="cultural-mirror-title">When competence becomes control</h3>
+    <p>In <em>The Bear</em>, Carmy’s extraordinary competence repeatedly becomes a trap. He can see what excellence requires, but under pressure his care for the work contracts into control of the people doing it. The kitchen gets his standards and loses his steadiness.</p>
+    <p>The series is useful here because it refuses the easy division between gifted leader and selfish tyrant. Carmy often wants the right thing. His failure is directional: strength that cannot trust, teach, or make room eventually makes everyone smaller—including its possessor.</p>
+  </div>
+</aside>
+
 An organization can celebrate helpfulness while quietly depending on the same conscientious people to absorb understaffing. A leader can “help” by taking over, then wonder why others wait to be rescued. A teacher can answer every difficult question and deprive students of the struggle through which judgment develops. A family can call one person reliable until reliability becomes captivity.
 
 Research on prosocial behaviour at work cautions against treating other-oriented action as uniformly beneficial. Mark Bolino and Adam Grant’s major review maps both the bright side of prosociality and its costs, unintended consequences, and contested effects. [[9]](#note-9) More recent daily research distinguishes freely chosen extra-role behaviour from *citizenship pressure*—the felt demand to go beyond one’s role. In that study, pressure was associated with greater fatigue than the behaviour itself, with consequences reaching evening interactions with a spouse. [[10]](#note-10)
@@ -161,8 +181,10 @@ Strength does not find meaning in the mere fact that it can carry more.
 
 It finds meaning in what it chooses to protect—and in whether those it serves become more capable of walking their own path.
 
-> **The question worth carrying**<br />
-> Who needs your strength today—and what would help look like to them?
+<aside class="carrying-question" aria-labelledby="carrying-question-title">
+  <p class="callout-kicker">The question worth carrying</p>
+  <p id="carrying-question-title">Who needs your strength today—and what would help look like to them?</p>
+</aside>
 
 ---
 
