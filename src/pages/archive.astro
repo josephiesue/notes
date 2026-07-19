@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Emblem from '../components/Emblem.astro';
+const notes = (await getCollection('notes', ({data}) => !data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+const topics = [...new Set(notes.map(note => note.data.topic))].sort();
+const fmt = new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric'});
+---
+<BaseLayout title="Archive" description="Every published Iesue from The Yes-Way.">
+  <section class="page-intro archive-intro reveal is-visible">
+    <div><h1>Archive</h1><p>Every Iesue. Working ideas on leadership, service, learning, responsibility, and building what helps.</p></div>
+    <Emblem size={150} />
+  </section>
+  <div class="archive-tools reveal">
+    <span>Explore the path</span>
+    <div><a href="/archive/" class="active">All</a>{topics.map(topic => <a href={`/topics/${topic.toLowerCase().replace(/\s+/g,'-')}/`}>{topic}</a>)}</div>
+  </div>
+  <ol class="archive-list reveal">
+    {notes.map((note,index) => <li><a href={`/${note.slug}/`}>
+      <span class="archive-number">№{String(index + 1).padStart(3,'0')}</span>
+      <div><small>{note.data.topic}</small><strong>{note.data.title}</strong><p>{note.data.description}</p></div>
+      <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6" /></svg>
+    </a></li>)}
+  </ol>
+</BaseLayout>

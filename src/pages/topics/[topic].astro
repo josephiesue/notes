@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const all = await getCollection('notes', ({data}) => !data.draft);
+const slugify = (value:string) => value.toLowerCase().replace(/\s+/g,'-');
+export function getStaticPaths() {
+  const topicNames = ['Leadership','Service','Learning','Entrepreneurship','Organizations','Career Agency','Knowledge Systems'];
+  return topicNames.map(topic => ({
+    params:{topic:topic.toLowerCase().replace(/\s+/g,'-')},
+    props:{topic},
+  }));
+}
+const { topic } = Astro.props;
+const notes = all.filter(note => slugify(note.data.topic) === slugify(topic)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+const fmt = new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric'});
+---
+<BaseLayout title={topic} description={`Iesues on ${topic.toLowerCase()} from The Yes-Way.`}>
+  <section class="page-intro">
+    <a class="back-link" href="/topics/">← All topics</a>
+    <h1>{topic}</h1>
+    <p>{notes.length} {notes.length === 1 ? 'Iesue' : 'Iesues'} in this part of the path.</p>
+  </section>
+  {notes.length ? <ol class="archive-list">{notes.map(note => <li><a href={`/${note.slug}/`}><div><strong>{note.data.title}</strong><p>{note.data.description}</p></div><time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time><span aria-hidden="true">→</span></a></li>)}</ol> : <p class="empty-state">Iesues in this topic are coming soon.</p>}
+</BaseLayout>

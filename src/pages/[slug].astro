@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes', ({ data }) => !data.draft);
+  return notes.map(note => ({ params: { slug: note.slug }, props: { note } }));
+}
+const { note } = Astro.props;
+const { Content } = await note.render();
+const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
+const topicSlug = note.data.topic.toLowerCase().replace(/\s+/g,'-');
+---
+<BaseLayout title={note.data.title} description={note.data.description} type="article" publishedTime={note.data.date}>
+  <article class="article-shell">
+    <header class="article-header reveal is-visible">
+      <div class="article-kicker"><a class="article-topic" href={`/topics/${topicSlug}/`}>{note.data.topic}</a><span>The Yes-Way</span></div>
+      <h1>{note.data.title}</h1>
+      <p class="article-dek">{note.data.description}</p>
+      <div class="article-meta">
+        <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
+        <span>Joseph E. Iesue</span>
+      </div>
+    </header>
+    <div class="prose reveal"><Content /></div>
+    <footer class="article-end">
+      <span>Strength to serve. Service to grow.</span>
+      <a href="/archive/">All Iesues →</a>
+    </footer>
+  </article>
+</BaseLayout>

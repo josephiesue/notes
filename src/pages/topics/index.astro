@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const notes = await getCollection('notes', ({data}) => !data.draft);
+const counts = new Map<string,number>();
+for (const note of notes) counts.set(note.data.topic, (counts.get(note.data.topic) ?? 0) + 1);
+const topics = [...counts.entries()].sort(([a],[b]) => a.localeCompare(b));
+const slug = (value:string) => value.toLowerCase().replace(/\s+/g,'-');
+---
+<BaseLayout title="Topics" description="Explore The Yes-Way by subject.">
+  <section class="page-intro">
+    <h1>Topics</h1>
+    <p>Browse the published Iesues by subject.</p>
+  </section>
+  <ul class="topic-directory">
+    {topics.map(([topic,count]) => <li><a href={`/topics/${slug(topic)}/`}><span>{topic}</span><small>{count} {count === 1 ? 'Iesue' : 'Iesues'}</small><b aria-hidden="true">→</b></a></li>)}
+  </ul>
+</BaseLayout>

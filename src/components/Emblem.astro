@@ -1,0 +1,16 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+  decorative?: boolean;
+}
+const { size = 42, class: className = '', decorative = true } = Astro.props;
+---
+<span class:list={["emblem", className]} style={`--emblem-size:${size}px`} aria-hidden={decorative ? 'true' : undefined}>
+  <img src="/emblem-gold.svg" alt={decorative ? '' : 'Joseph Iesue emblem'} width={size} height={size} />
+</span>
+
+<style>
+  .emblem { display: inline-grid; width: var(--emblem-size); height: var(--emblem-size); place-items: center; flex: none; }
+  img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 16px rgba(223,184,78,.16)); }
+</style>

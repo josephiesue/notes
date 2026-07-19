@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Emblem from '../components/Emblem.astro';
+import Subscribe from '../components/Subscribe.astro';
+---
+<BaseLayout title="Start Here" description="Begin with The Yes-Way: a practical philosophy of self-mastery in service of others.">
+  <section class="page-intro about-intro reveal is-visible">
+    <div><h1>Start here.</h1><p>The Yes-Way is a practical philosophy of self-mastery in service of others.</p></div>
+    <Emblem size={150} />
+  </section>
+  <article class="prose about-prose reveal">
+    <p class="lead">One idea sits underneath everything here: <strong>you get strong by learning from and helping others.</strong> Strength is trained in private and spent in public. Self-mastery is the means. Service is the point.</p>
+    <h2>A surname that is also a thesis.</h2>
+    <p>My family name is Iesue. Most people read it as <em>Issue</em>. Said properly, it sounds like <em>yes way</em>.</p>
+    <p>An issue is what life hands you. The Yes-Way is what you do about it: affirm reality, choose responsibility, build the strength to serve, and keep walking the path.</p>
+    <blockquote>Strength to serve. Service to grow.</blockquote>
+    <h2>What you will find here</h2>
+    <p>Each Iesue is a working piece: a research reflection, field note, framework, or practical question. Together they explore leadership, learning, entrepreneurship, organizational life, and the disciplines that make contribution possible.</p>
+    <p><a class="text-link" href="https://josephiesue.com/yes-way/">Read the full canon <span aria-hidden="true">→</span></a></p>
+  </article>
+  <Subscribe />
+</BaseLayout>

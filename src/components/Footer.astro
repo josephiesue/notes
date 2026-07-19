@@ -1,0 +1,17 @@
+---
+import Emblem from './Emblem.astro';
+---
+<footer class="site-footer">
+  <div class="footer-main">
+    <a class="footer-brand" href="/">
+      <Emblem size={44} />
+      <span><strong>The Yes-Way</strong><small>Written by Joseph E. Iesue</small></span>
+    </a>
+    <nav aria-label="Footer navigation">
+      <a href="/about/">Start here</a><a href="/archive/">Archive</a><a href="/rss.xml">RSS</a>
+      <a href="https://josephiesue.com" target="_blank" rel="noopener">josephiesue.com ↗</a>
+    </nav>
+    <p>Strength to serve.<br />Service to grow.</p>
+  </div>
+  <div class="footer-legal"><span>© {new Date().getFullYear()} Joseph E. Iesue</span><span>The Yes-Way</span></div>
+</footer>

@@ -1,0 +1,48 @@
+---
+interface Props { class?: string; variant?: 'hero' | 'wide' | 'frame'; }
+const { class: className = '', variant = 'wide' } = Astro.props;
+const paths = [
+  'M-80 348 C120 240 250 432 430 318 S750 226 930 334 1240 448 1600 284',
+  'M-80 372 C110 266 256 450 440 344 S744 252 936 360 1244 472 1600 312',
+  'M-80 396 C100 292 266 470 452 370 S742 280 944 386 1250 494 1600 340',
+  'M-80 420 C92 320 274 488 466 396 S744 308 954 412 1254 518 1600 370',
+  'M-80 444 C86 346 284 506 480 422 S748 338 964 438 1260 540 1600 398',
+  'M-80 468 C80 374 292 526 492 450 S754 366 976 464 1266 562 1600 426',
+  'M-80 492 C74 400 302 544 506 476 S760 394 988 490 1274 584 1600 454',
+  'M-80 516 C70 426 312 562 520 502 S768 422 1000 516 1280 606 1600 482',
+  'M-80 540 C64 454 320 580 534 528 S778 450 1012 542 1288 628 1600 510',
+];
+---
+<div class:list={["path-field", `path-field--${variant}`, className]} aria-hidden="true">
+  <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" role="presentation">
+    <defs>
+      <linearGradient id={`path-gradient-${variant}`} x1="0" x2="1">
+        <stop offset="0" stop-color="#815f27" stop-opacity="0" />
+        <stop offset=".27" stop-color="#b38332" stop-opacity=".55" />
+        <stop offset=".55" stop-color="#e5bd56" stop-opacity=".95" />
+        <stop offset=".82" stop-color="#9b7130" stop-opacity=".42" />
+        <stop offset="1" stop-color="#815f27" stop-opacity="0" />
+      </linearGradient>
+      <filter id={`path-glow-${variant}`} x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2.4" result="blur" />
+        <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <g class="contours" fill="none" stroke={`url(#path-gradient-${variant})`} stroke-width="1">
+      {paths.map((d, index) => <path d={d} style={`--path-index:${index}`} />)}
+    </g>
+    <path class="live-path" d={paths[4]} fill="none" stroke={`url(#path-gradient-${variant})`} stroke-width="1.25" filter={`url(#path-glow-${variant})`} />
+  </svg>
+</div>
+
+<style>
+  .path-field { position:absolute; inset:0; overflow:hidden; pointer-events:none; opacity:.72; mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent); }
+  svg { width:100%; height:100%; display:block; }
+  .contours path { opacity: calc(.16 + (var(--path-index) * .03)); stroke-dasharray: 2 4; }
+  .live-path { stroke-dasharray: 100 1300; animation:path-travel 13s linear infinite; }
+  .path-field--hero { inset: 15% -8% -5% 30%; opacity:.9; transform:rotate(-5deg); }
+  .path-field--frame { opacity:.58; transform:scaleY(.78); }
+  @keyframes path-travel { to { stroke-dashoffset:-1400; } }
+  @media (max-width:760px) { .path-field--hero { inset:25% -70% -4% -16%; opacity:.52; } }
+  @media (prefers-reduced-motion:reduce) { .live-path { animation:none; stroke-dasharray:none; opacity:.55; } }
+</style>

@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Subscribe from '../components/Subscribe.astro';
+
+const notes = (await getCollection('notes', ({ data }) => !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = notes.find(note => note.data.featured) ?? notes[0];
+const recent = notes.filter(note => note.id !== featured?.id).slice(0, 4);
+const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
+const fourYeses = [
+  { title: 'Yes to reality', copy: 'Begin with what is.' },
+  { title: 'Yes to responsibility', copy: 'Choose what is yours to carry.' },
+  { title: 'Yes to service', copy: 'Spend strength where it helps.' },
+  { title: 'Yes to the path', copy: 'Keep walking; keep learning.' },
+];
+---
+<BaseLayout title="The Yes-Way">
+  <div class="opening-field">
+    <section class="yes-hero" aria-labelledby="hero-title">
+      <div class="hero-copy reveal is-visible">
+        <h1 id="hero-title">Strength to <span>serve.</span><br />Service to <b>grow.</b></h1>
+        <p>A practical philosophy for choosing what deserves your whole yes—and walking that path with courage, discipline, and service.</p>
+        <a class="text-link" href={featured ? `/${featured.slug}/` : '/archive/'}>Read the latest Iesue <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    {featured && <section class="featured-iesue reveal" aria-labelledby="featured-title">
+      <div class="edition-number"><span>Iesue</span><strong>№001</strong></div>
+      <div class="edition-rule"><i></i></div>
+      <article class="edition-copy">
+        <h2 id="featured-title"><a href={`/${featured.slug}/`}>{featured.data.title}</a></h2>
+        <p class="edition-meta"><time datetime={featured.data.date.toISOString()}>{fmt.format(featured.data.date)}</time></p>
+        <p>{featured.data.description}</p>
+        <a class="text-link" href={`/${featured.slug}/`}>Read the Iesue <span aria-hidden="true">→</span></a>
+      </article>
+    </section>}
+  </div>
+
+  <div class="principles-field">
+    <section class="four-yeses reveal" id="four-yeses" aria-labelledby="four-yeses-title">
+      <header>
+        <h2 id="four-yeses-title">The Four Yeses</h2>
+        <p>A compass for practice.</p>
+      </header>
+      <div class="yes-compass">
+        {fourYeses.map((yes, index) => <article class={`yes yes-${index + 1}`}>
+          <h3>{yes.title}</h3><p>{yes.copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    {recent.length > 0 && <section class="recent-iesues reveal" aria-labelledby="recent-title">
+      <div class="recent-heading"><h2 id="recent-title">Recent Iesues</h2><span aria-hidden="true"></span></div>
+      <ol>
+        {recent.map((note) => <li>
+          <a href={`/${note.slug}/`}>
+            <span class="list-star" aria-hidden="true">✦</span>
+            <span class="list-title"><strong>{note.data.title}</strong></span>
+            <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
+            <span class="list-topic">{note.data.topic}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6" /></svg>
+          </a>
+        </li>)}
+      </ol>
+    </section>}
+  </div>
+
+  <Subscribe />
+</BaseLayout>

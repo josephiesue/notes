@@ -1,0 +1,23 @@
+---
+import Emblem from './Emblem.astro';
+const path = Astro.url.pathname;
+const active = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
+---
+<header class="site-header" data-header>
+  <div class="header-inner">
+    <a class="masthead" href="/" aria-label="The Yes-Way home">
+      <Emblem size={52} />
+      <span><strong>The <b>Yes-Way</b></strong><small>by Joseph E. Iesue</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+      <span></span><span></span><span></span><i>Menu</i>
+    </button>
+    <nav id="primary-nav" aria-label="Primary navigation" data-nav>
+      <a class:list={{ active: active('/about/') }} href="/about/">Start here</a>
+      <a href="/#four-yeses">The Four Yeses</a>
+      <a class:list={{ active: active('/archive/') || active('/topics/') }} href="/archive/">Archive</a>
+      <a href="/#subscribe">Subscribe</a>
+      <a class="external" href="https://josephiesue.com" target="_blank" rel="noopener">josephiesue.com <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
