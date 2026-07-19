@@ -11,6 +11,10 @@ const notes = defineCollection({
     updated: z.coerce.date().optional(),
     topic: z.string(),
     tags: z.array(z.string()).default([]),
+    outline: z.array(z.object({
+      label: z.string(),
+      id: z.string(),
+    })).max(7).optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
   }).superRefine((note, context) => {
