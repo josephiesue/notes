@@ -2,6 +2,7 @@
 title: Service is a practice before it becomes a value
 description: Values become credible when they are expressed through repeated choices, responsibilities, and systems.
 date: 2026-07-08
+format: practical
 topic: Service
 tags: [service leadership, practice, culture]
 ---

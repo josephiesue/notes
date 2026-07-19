@@ -2,6 +2,7 @@
 title: Build the practice before raising the bar
 description: Higher standards become sustainable when people have the routines, feedback, and support needed to reach them.
 date: 2026-06-18
+format: practical
 topic: Leadership
 tags: [leadership, practice, standards]
 ---

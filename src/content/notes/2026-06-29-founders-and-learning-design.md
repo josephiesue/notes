@@ -2,6 +2,7 @@
 title: What founders can learn from learning design
 description: Early-stage teams improve faster when feedback, practice, and reflection are designed into the work.
 date: 2026-06-29
+format: practical
 topic: Learning
 tags: [founders, learning design, feedback]
 ---

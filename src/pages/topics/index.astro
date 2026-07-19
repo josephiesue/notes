@@ -10,9 +10,9 @@ const slug = (value:string) => value.toLowerCase().replace(/\s+/g,'-');
 <BaseLayout title="Topics" description="Explore The Yes-Way by subject.">
   <section class="page-intro">
     <h1>Topics</h1>
-    <p>Browse the published Iesues by subject.</p>
+    <p>Browse every form of The Yes-Way by subject.</p>
   </section>
   <ul class="topic-directory">
-    {topics.map(([topic,count]) => <li><a href={`/topics/${slug(topic)}/`}><span>{topic}</span><small>{count} {count === 1 ? 'Iesue' : 'Iesues'}</small><b aria-hidden="true">→</b></a></li>)}
+    {topics.map(([topic,count]) => <li><a href={`/topics/${slug(topic)}/`}><span>{topic}</span><small>{count} {count === 1 ? 'note' : 'notes'}</small><b aria-hidden="true">→</b></a></li>)}
   </ul>
 </BaseLayout>

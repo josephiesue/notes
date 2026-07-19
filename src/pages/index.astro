@@ -4,9 +4,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Subscribe from '../components/Subscribe.astro';
 
 const notes = (await getCollection('notes', ({ data }) => !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
-const featured = notes.find(note => note.data.featured) ?? notes[0];
-const recent = notes.filter(note => note.id !== featured?.id).slice(0, 4);
+const iesues = notes.filter(note => note.data.format === 'iesue');
+const featured = iesues.find(note => note.data.featured) ?? iesues[0];
+const recent = notes.filter(note => note.data.format === 'practical').slice(0, 4);
 const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
+const iesueNumber = (number: number) => String(number).padStart(3, '0');
 const fourYeses = [
   { title: 'The Mirror', copy: 'Develops the self.' },
   { title: 'The Weight', copy: 'Puts strength to service.' },
@@ -28,7 +30,7 @@ const fourYeses = [
     </section>
 
     {featured && <section class="featured-iesue reveal" aria-labelledby="featured-title">
-      <div class="edition-number"><span>Iesue</span><strong>№001</strong></div>
+      <div class="edition-number"><span>Iesue</span><strong>№{iesueNumber(featured.data.iesue!)}</strong></div>
       <div class="edition-rule"><i></i></div>
       <article class="edition-copy">
         <h2 id="featured-title"><a href={`/${featured.slug}/`}>{featured.data.title}</a></h2>
@@ -53,7 +55,7 @@ const fourYeses = [
     </section>
 
     {recent.length > 0 && <section class="recent-iesues reveal" aria-labelledby="recent-title">
-      <div class="recent-heading"><h2 id="recent-title">Recent Iesues</h2><span aria-hidden="true"></span></div>
+      <div class="recent-heading"><h2 id="recent-title">Practical Notes</h2><span aria-hidden="true"></span></div>
       <ol>
         {recent.map((note) => <li>
           <a href={`/${note.slug}/`}>
