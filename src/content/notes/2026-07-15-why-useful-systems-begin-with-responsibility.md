@@ -2,11 +2,10 @@
 title: Why useful systems begin with responsibility
 description: Responsibility fails when ownership is clear but authority, information, and permission to speak are not. A field guide to designing systems people can actually carry.
 date: 2026-07-15
-format: iesue
-iesue: 1
+format: practical
 topic: Organizations
 tags: [the ground, responsibility, work design, learning culture, organizational systems, AI governance]
-featured: true
+featured: false
 ---
 
 > “Some things are in our control and others not.”<br />
