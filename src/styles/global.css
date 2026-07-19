@@ -486,6 +486,17 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
   letter-spacing:.02em;
 }
 .four-yeses > header p { margin-top:12px; color:#dfd2bf; font-size:1.2rem; }
+.compass-practice-link {
+  display:inline-flex;
+  align-items:center;
+  gap:.42em;
+  padding-bottom:3px;
+  color:inherit;
+  border-bottom:1px solid rgba(217,164,66,.5);
+  transition:color .2s ease,border-color .2s ease;
+}
+.compass-practice-link:hover { color:#efd071; border-color:#efd071; }
+.compass-practice-link span { color:#7c9fff; font-size:.78em; }
 .yes-compass {
   width:min(830px,67vw,calc(23.7vw + 434px));
   min-height:390px;
