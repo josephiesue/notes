@@ -701,7 +701,15 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
     background-size:auto 100%;
   }
   .subscribe-inner { min-height:915px; padding:390px 30px 76px; display:flex; flex-direction:column; justify-content:center; }
-  .footer-main { width:calc(100% - 44px); }
+  .footer-main {
+    width:calc(100% - 44px);
+    grid-template-columns:1fr;
+    gap:30px;
+    text-align:center;
+  }
+  .footer-brand { justify-content:center; }
+  .footer-main nav { justify-content:center; }
+  .footer-main > p { grid-column:1; text-align:center; }
 }
 
 @media (max-width:560px) {
