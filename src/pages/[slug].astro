@@ -12,9 +12,16 @@ const { Content } = await note.render();
 const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
 const topicSlug = note.data.topic.toLowerCase().replace(/\s+/g,'-');
 const noteLabel = publicationLabel(note.data.format, note.data.iesue);
+const isIesue = note.data.format === 'iesue';
+const wordCount = note.body
+  .replace(/<[^>]*>/g, ' ')
+  .replace(/\[[^\]]*\]\([^)]*\)/g, ' ')
+  .split(/\s+/)
+  .filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
 ---
 <BaseLayout title={note.data.title} description={note.data.description} type="article" publishedTime={note.data.date}>
-  <article class="article-shell">
+  <article class:list={['article-shell', { 'iesue-article': isIesue }] }>
     <header class="article-header reveal is-visible">
       <div class="article-kicker"><a class="article-topic" href={`/topics/${topicSlug}/`}>{note.data.topic}</a><span>{noteLabel}</span></div>
       <h1>{note.data.title}</h1>
@@ -22,8 +29,19 @@ const noteLabel = publicationLabel(note.data.format, note.data.iesue);
       <div class="article-meta">
         <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
         <span>Joseph E. Iesue</span>
+        {isIesue && <span>≈ {readingMinutes} min read</span>}
       </div>
     </header>
+    {isIesue && note.data.outline && (
+      <nav class="iesue-contents reveal is-visible" aria-label="In this Iesue">
+        <p>In this Iesue</p>
+        <ol>
+          {note.data.outline.map((item) => (
+            <li><a href={`#${item.id}`}>{item.label}</a></li>
+          ))}
+        </ol>
+      </nav>
+    )}
     <div class="prose reveal is-visible"><Content /></div>
     <footer class="article-end">
       <span>Strength to serve. Service to grow.</span>
