@@ -1,6 +1,6 @@
 ---
 title: What Is Your Strength For?
-description: Strength is not defined by what it can carry, but by what it protects—and whether service leaves other people more capable and free.
+description: Strength is not defined by what it can carry, but by what it protects. Service should leave other people more capable and free.
 date: 2026-07-20
 format: iesue
 iesue: 1
@@ -50,7 +50,7 @@ Strength, then, is not simply force held in reserve. It is capacity placed under
 
 ## Private discipline, public consequences
 
-Marcus Aurelius wrote the reflections now called the *Meditations* while carrying an office whose private failures could become public consequences. The location notes attached to its early books place at least part of that writing around Carnuntum and the country of the Quadi—near a military frontier, although we should resist turning every sentence into a battlefield maxim. [[1]](#note-1)
+Marcus Aurelius wrote the reflections now called the *Meditations* while carrying an office whose private failures could become public consequences. The location notes attached to its early books place at least part of that writing around Carnuntum and the country of the Quadi, near a military frontier. We should resist turning every sentence into a battlefield maxim. [[1]](#note-1)
 
 The setting matters less as heroic scenery than as a reminder. His philosophy was not merely an inward retreat. It was maintenance for a person whose decisions reached far beyond himself.
 
@@ -84,7 +84,7 @@ The short phrase is memorable; Greenleaf’s test is more important. Ask what ha
 
 This moves service beyond the leader’s intention. Feeling generous is not evidence of having helped. The consequence belongs in the definition.
 
-Martin Luther King Jr. made a related move in his 1968 sermon “The Drum Major Instinct.” He did not pretend that the desire for distinction could simply be deleted from human character. He showed how the hunger to be first can harden into superiority, exclusion, and racial injustice—and how ambition might instead be reordered toward love, justice, and service. [[6]](#note-6)
+Martin Luther King Jr. made a related move in his 1968 sermon “The Drum Major Instinct.” He did not pretend that the desire for distinction could simply be deleted from human character. He showed how the hunger to be first can harden into superiority, exclusion, and racial injustice. He also showed how ambition might be reordered toward love, justice, and service. [[6]](#note-6)
 
 Reordered, not erased.
 
@@ -94,7 +94,7 @@ The question is not whether you possess strength. It is whether your strength ha
 
 ## Research offers direction, not a halo
 
-The contemporary evidence on servant leadership is broadly encouraging—and methodologically untidy.
+The contemporary evidence on servant leadership is broadly encouraging, but methodologically untidy.
 
 A systematic review by Nathan Eva and colleagues examined 285 articles published between 1998 and 2018. The authors found a growing literature, but also conceptual overlap and inconsistent measurement; they evaluated 16 different instruments and called for greater theoretical clarity. [[7]](#note-7) In other words, popularity had outrun precision.
 
@@ -115,13 +115,13 @@ Service has a shadow because moral language can disguise unhealthy arrangements.
   <div>
     <h3 id="cultural-mirror-title">When competence becomes control</h3>
     <p>In <em>The Bear</em>, Carmy’s extraordinary competence repeatedly becomes a trap. He can see what excellence requires, but under pressure his care for the work contracts into control of the people doing it. The kitchen gets his standards and loses his steadiness.</p>
-    <p>The series is useful here because it refuses the easy division between gifted leader and selfish tyrant. Carmy often wants the right thing. His failure is directional: strength that cannot trust, teach, or make room eventually makes everyone smaller—including its possessor.</p>
+    <p>The series is useful here because it refuses the easy division between gifted leader and selfish tyrant. Carmy often wants the right thing. His failure is directional. Strength that cannot trust, teach, or make room eventually makes everyone smaller, including its possessor.</p>
   </div>
 </aside>
 
 An organization can celebrate helpfulness while quietly depending on the same conscientious people to absorb understaffing. A leader can “help” by taking over, then wonder why others wait to be rescued. A teacher can answer every difficult question and deprive students of the struggle through which judgment develops. A family can call one person reliable until reliability becomes captivity.
 
-Research on prosocial behaviour at work cautions against treating other-oriented action as uniformly beneficial. Mark Bolino and Adam Grant’s major review maps both the bright side of prosociality and its costs, unintended consequences, and contested effects. [[9]](#note-9) More recent daily research distinguishes freely chosen extra-role behaviour from *citizenship pressure*—the felt demand to go beyond one’s role. In that study, pressure was associated with greater fatigue than the behaviour itself, with consequences reaching evening interactions with a spouse. [[10]](#note-10)
+Research on prosocial behaviour at work cautions against treating other-oriented action as uniformly beneficial. Mark Bolino and Adam Grant’s major review maps both the bright side of prosociality and its costs, unintended consequences, and contested effects. [[9]](#note-9) More recent daily research distinguishes freely chosen extra-role behaviour from *citizenship pressure*, which is the felt demand to go beyond one’s role. In that study, pressure was associated with greater fatigue than the behaviour itself, with consequences reaching evening interactions with a spouse. [[10]](#note-10)
 
 Even the recipient can be diminished by badly designed help. Young Eun Lee and colleagues distinguish **empowering help**, which gives people tools for greater self-reliance, from **nonempowering help**, which supplies an immediate solution. Their studies show why the same act can be experienced differently, including through gendered competence stereotypes. [[11]](#note-11) A 2026 study similarly found that dependent help could carry motivational costs for later creativity, whereas autonomy-supporting help worked differently through intrinsic motivation. [[12]](#note-12)
 
@@ -148,7 +148,7 @@ It is the burden that is genuinely yours, proportionate to your capacity, connec
   <h3 id="weight-test-title">Before you carry the weight</h3>
   <ol>
     <li><strong>Protection</strong><span>What or whom will this strength protect?</span></li>
-    <li><strong>Permission</strong><span>Have I listened—and is this help wanted?</span></li>
+    <li><strong>Permission</strong><span>Have I listened? Is this help wanted?</span></li>
     <li><strong>Agency</strong><span>Will the other person become more capable and free, or more dependent on me?</span></li>
     <li><strong>Proportion</strong><span>Is this burden actually mine, and can I carry it competently?</span></li>
     <li><strong>Sustainability</strong><span>Can I serve without making exhaustion the permanent price of being good?</span></li>
@@ -179,11 +179,11 @@ The Mirror matters because ungoverned power is dangerous. The Ground matters bec
 
 Strength does not find meaning in the mere fact that it can carry more.
 
-It finds meaning in what it chooses to protect—and in whether those it serves become more capable of walking their own path.
+It finds meaning in what it chooses to protect. Its meaning also depends on whether those it serves become more capable of walking their own path.
 
 <aside class="carrying-question" aria-labelledby="carrying-question-title">
   <p class="callout-kicker">The question worth carrying</p>
-  <p id="carrying-question-title">Who needs your strength today—and what would help look like to them?</p>
+  <p id="carrying-question-title">Who needs your strength today? What would help look like to them?</p>
 </aside>
 
 ---
@@ -207,4 +207,4 @@ It finds meaning in what it chooses to protect—and in whether those it serves 
 
 ### A note on comparison and evidence
 
-The Yes-Way propositions in this essay—especially the Weight test and the five-part practice—are my synthesis. The philosophical traditions cited here illuminate different dimensions of relational strength; they are not presented as interchangeable or as empirical validation for one another. The organizational studies concern particular constructs and contexts. They inform the argument without establishing a universal law of service.
+The Yes-Way propositions in this essay, especially the Weight test and the five-part practice, are my synthesis. The philosophical traditions cited here illuminate different dimensions of relational strength; they are not presented as interchangeable or as empirical validation for one another. The organizational studies concern particular constructs and contexts. They inform the argument without establishing a universal law of service.
