@@ -18,7 +18,7 @@ const {
   publishedTime,
 } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site ?? 'https://notes.josephiesue.com').toString();
-const pageTitle = title === 'The Yes-Way' ? 'The Yes-Way — Joseph E. Iesue' : `${title} — The Yes-Way`;
+const pageTitle = title === 'The Yes-Way' ? 'The Yes-Way | Joseph E. Iesue' : `${title} | The Yes-Way`;
 ---
 <!doctype html>
 <html lang="en">
