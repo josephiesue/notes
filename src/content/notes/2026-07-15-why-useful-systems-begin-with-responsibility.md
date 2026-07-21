@@ -9,13 +9,13 @@ featured: false
 ---
 
 > “Some things are in our control and others not.”<br />
-> — Epictetus, *Enchiridion*, §1 [[1]](#note-1)
+> Epictetus, *Enchiridion*, §1 [[1]](#note-1)
 
 <p class="lead">A useful system does not merely assign responsibility. It gives a person a fair chance to carry it.</p>
 
 Consider a familiar meeting.
 
-A deadline has been missed. The work moved from strategy to design, from design to operations, and from operations to a partner outside the organization. Every team completed something. Nobody protected the whole outcome. By the time the failure became visible, each person could explain—with some accuracy—why the decisive moment belonged to someone else.
+A deadline has been missed. The work moved from strategy to design, from design to operations, and from operations to a partner outside the organization. Every team completed something. Nobody protected the whole outcome. By the time the failure became visible, each person could explain with some accuracy why the decisive moment belonged to someone else.
 
 The meeting ends with familiar remedies: communicate earlier, collaborate better, take more ownership.
 
@@ -27,13 +27,13 @@ That distinction matters in a classroom, a hospital, a start-up, a university, a
 
 This first Iesue therefore begins with a deceptively simple claim:
 
-> **A useful system begins by asking what responsibility a person is carrying—and then designing the conditions that make responsible action possible.**
+> **A useful system begins by asking what responsibility a person is carrying. It then designs the conditions that make responsible action possible.**
 
 ## Responsibility is not blame
 
 Organizations frequently confuse responsibility with the location at which blame should stop.
 
-Blame looks backward. It asks who can be attached to the failure. Responsibility is wider. It asks who must notice, decide, act, communicate, and repair—before the failure becomes inevitable.
+Blame looks backward. It asks who can be attached to the failure. Responsibility is wider. It asks who must notice, decide, act, communicate, and repair before the failure becomes inevitable.
 
 The distinction is not an argument against individual accountability. People can act carelessly, conceal information, avoid difficult conversations, or neglect standards they understood perfectly well. Character matters. The Mirror comes before public trust.
 
@@ -71,7 +71,7 @@ Before asking a person to “own” an outcome, inspect six conditions.
 
 ### 1. A visible outcome
 
-Can the person describe what must be protected—not merely which task must be completed?
+Can the person describe what must be protected, rather than merely which task must be completed?
 
 Tasks encourage local completion. Responsibility requires sight of the consequence. “Send the report” is a task. “Give the decision-maker an accurate basis for acting by Thursday” is an outcome.
 
@@ -89,7 +89,7 @@ Information delivered after the decision is documentation, not support. Useful s
 
 ### 4. Explicit handoffs
 
-Where does responsibility move—and how do both sides know that it has moved?
+Where does responsibility move, and how do both sides know that it has moved?
 
 “I sent it” is not the same as “the next owner received, understood, and accepted it.” Handoffs require a visible change in custody.
 
@@ -192,7 +192,7 @@ Audit what the system asks people to carry against what it allows them to see an
 
 ## The practice: a Ground Audit for responsibility
 
-Choose one recurring responsibility—not an entire department. Use a missed deadline, student project, client handoff, hiring decision, assessment, or AI-assisted workflow.
+Choose one recurring responsibility rather than an entire department. Use a missed deadline, student project, client handoff, hiring decision, assessment, or AI-assisted workflow.
 
 Write the responsibility in one sentence:
 
@@ -232,4 +232,4 @@ The Mirror develops the person. The Weight gives capability a purpose. The Groun
 
 ### A note on the argument
 
-The opening meeting is a composite, not a report of a particular organization. The Yes-Way propositions in this essay—especially the six conditions of responsible work and the four-level application—are my synthesis and interpretation of the cited philosophical, organizational, educational, and governance sources. They should not be read as claims that any single study establishes the complete framework.
+The opening meeting is a composite, not a report of a particular organization. The Yes-Way propositions in this essay, especially the six conditions of responsible work and the four-level application, are my synthesis and interpretation of the cited philosophical, organizational, educational, and governance sources. They should not be read as claims that any single study establishes the complete framework.
