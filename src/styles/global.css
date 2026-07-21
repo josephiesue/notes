@@ -303,7 +303,7 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
 .article-end { margin:90px 0 0; padding:30px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; color:var(--muted); }
 .about-prose { margin-left:0; }
 
-/* Iesue — flagship long-form journal system */
+/* Iesue: flagship long-form journal system */
 .iesue-article {
   max-width:1320px;
   display:grid;
@@ -670,7 +670,7 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
   .reveal { opacity:1; transform:none; }
 }
 
-/* The Yes-Way — accepted celestial editorial direction */
+/* The Yes-Way: accepted celestial editorial direction */
 .sr-only {
   position:absolute !important; width:1px !important; height:1px !important;
   padding:0 !important; margin:-1px !important; overflow:hidden !important;
