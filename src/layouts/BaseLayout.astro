@@ -19,6 +19,26 @@ const {
 } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site ?? 'https://notes.josephiesue.com').toString();
 const pageTitle = title === 'The Yes-Way' ? 'The Yes-Way | Joseph E. Iesue' : `${title} | The Yes-Way`;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://josephiesue.com/#person',
+      name: 'Joseph E. Iesue',
+      url: 'https://josephiesue.com/',
+      sameAs: ['https://josephiesue.com/', 'https://entr.cc/'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://notes.josephiesue.com/#website',
+      url: 'https://notes.josephiesue.com/',
+      name: 'The Yes-Way',
+      description: 'A practical philosophy for building strength, choosing responsibility, and putting work in service of something larger.',
+      publisher: { '@id': 'https://josephiesue.com/#person' },
+    },
+  ],
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -28,6 +48,8 @@ const pageTitle = title === 'The Yes-Way' ? 'The Yes-Way | Joseph E. Iesue' : `$
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="author" href="https://josephiesue.com/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <meta name="author" content="Joseph E. Iesue" />
     <meta name="theme-color" content="#06090f" />
     <meta name="robots" content="index,follow" />
@@ -43,6 +65,7 @@ const pageTitle = title === 'The Yes-Way' ? 'The Yes-Way | Joseph E. Iesue' : `$
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cinzel:wght@500;600;700;900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <div class="ambient-field" aria-hidden="true"><i></i><i></i><i></i></div>
