@@ -1034,9 +1034,9 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
   .masthead small { font-size:.68rem; }
   .yes-hero { min-height:760px; padding:58px 18px 285px; }
   .hero-copy h1 {
-    font-size:clamp(2.25rem,10.4vw,3.1rem);
+    font-size:clamp(1.95rem,8.8vw,2.6rem);
     line-height:1.08;
-    letter-spacing:-.045em;
+    letter-spacing:-.035em;
   }
   .hero-copy p { font-size:1.01rem; line-height:1.5; }
   .featured-iesue {
@@ -1063,9 +1063,9 @@ main { width:min(var(--container),calc(100% - 96px)); margin:0 auto; }
   .yes h3 { font-size:.74rem; letter-spacing:.1em; }
   .yes p { font-size:.9rem; line-height:1.35; }
   .recent-iesues { width:calc(100% - 34px); min-height:480px; padding-top:50px; }
-  .recent-heading { gap:14px; align-items:center; }
-  .recent-heading h2 { font-size:2.1rem; }
-  .recent-heading > a { font-size:.6rem; }
+  .recent-heading { gap:8px; align-items:center; }
+  .recent-heading h2 { font-size:1.65rem; letter-spacing:.02em; }
+  .recent-heading > a { font-size:.55rem; }
   .recent-iesues li > a { grid-template-columns:minmax(0,1fr) 30px; }
   .list-title strong { font-size:1.28rem; }
   .subscribe-frame { margin-inline:-15px; min-height:920px; padding:14px; }
