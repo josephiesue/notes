@@ -11,4 +11,4 @@ Service is easy to admire as a value. It is harder to maintain as a practice.
 
 A practice is visible in repeated choices: who receives attention, how responsibility is shared, what happens when the work becomes inconvenient, and whether contribution is supported by the surrounding system.
 
-Organizations strengthen service when they make it possible to practice—not merely safe to praise.
+Organizations strengthen service when they make it possible to practice, not merely safe to praise.
