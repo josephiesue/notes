@@ -58,7 +58,7 @@ const fourYeses = [
       </header>
       <div class="yes-compass">
         {fourYeses.map((yes, index) => <article class={`yes yes-${index + 1}`}>
-          <h3>{yes.title}</h3><p>{yes.copy}</p>
+          <a href={`/archive/?theme=${yes.title.replace("The ", "")}#iesues`}><h3>{yes.title}<span aria-hidden="true">↗</span></h3><p>{yes.copy}</p><span class="theme-explore">Explore the essays</span></a>
         </article>)}
       </div>
     </section>

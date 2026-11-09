@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/editorial.css';
 
 interface Props {
   title: string;
@@ -91,6 +92,22 @@ const structuredData = {
         nav?.classList.remove('is-open');
         document.body.classList.remove('menu-open');
       }));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+          menuButton.setAttribute('aria-expanded', 'false');
+          nav?.classList.remove('is-open');
+          document.body.classList.remove('menu-open');
+          (menuButton as HTMLButtonElement).focus();
+        }
+      });
+      window.matchMedia('(min-width: 821px)').addEventListener('change', (event) => {
+        if (event.matches) {
+          menuButton?.setAttribute('aria-expanded', 'false');
+          nav?.classList.remove('is-open');
+          document.body.classList.remove('menu-open');
+        }
+      });
 
       const setHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
       setHeader();

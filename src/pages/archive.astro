@@ -17,8 +17,15 @@ const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'n
   </section>
   <section class="series-archive" id="iesues" aria-labelledby="series-title">
     <header class="section-heading"><div><p class="theme-label">The monthly series</p><h2 id="series-title">The Iesues</h2></div><span>Begin at 001. Follow your questions.</span></header>
+    <div class="journal-tools" hidden>
+      <div class="theme-filters" role="group" aria-label="Filter Iesues by theme">
+        {['All', 'Mirror', 'Ground', 'Path', 'Weight'].map(theme => <button type="button" data-theme-filter={theme} aria-pressed={theme === 'All' ? 'true' : 'false'}>{theme === 'All' ? 'All Iesues' : `The ${theme}`}</button>)}
+      </div>
+      <label class="issue-sort">Order <select id="issue-order"><option value="oldest">Start at 001</option><option value="newest">Newest first</option></select></label>
+      <p class="filter-status" role="status" aria-live="polite"></p>
+    </div>
     <ol class="issue-list">
-      {iesues.map(note => <li><a href={`/${note.slug}/`}>
+      {iesues.map(note => <li data-theme={note.data.theme ?? 'Weight'} data-issue={note.data.iesue}><a href={`/${note.slug}/`}>
         <span class="issue-index">{String(note.data.iesue).padStart(3,'0')}</span>
         <div class="issue-detail"><small>The {note.data.theme ?? 'Weight'}</small><h3>{note.data.title}</h3><p>{note.data.description}</p></div>
         <div class="issue-date"><time datetime={note.data.date.toISOString()}>{month.format(note.data.date)}</time><span aria-hidden="true">↗</span></div>
@@ -30,3 +37,42 @@ const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'n
     <ol class="archive-list">{other.map(note => <li><a href={`/${note.slug}/`}><span class="archive-number">{publicationShortLabel(note.data.format)}</span><div><small>{note.data.topic}</small><strong>{note.data.title}</strong><p>{note.data.description}</p></div><time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time><span aria-hidden="true">→</span></a></li>)}</ol>
   </section>
 </BaseLayout>
+
+<script>
+  const tools = document.querySelector<HTMLElement>('.journal-tools');
+  const list = document.querySelector<HTMLOListElement>('.issue-list');
+  const rows = [...document.querySelectorAll<HTMLLIElement>('.issue-list > li')];
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-theme-filter]')];
+  const order = document.querySelector<HTMLSelectElement>('#issue-order');
+  const status = document.querySelector<HTMLElement>('.filter-status');
+  const themes = ['All', 'Mirror', 'Ground', 'Path', 'Weight'];
+  let selected = 'All';
+  const apply = () => {
+    let count = 0;
+    rows.sort((a,b) => (Number(a.dataset.issue) - Number(b.dataset.issue)) * (order?.value === 'newest' ? -1 : 1)).forEach(row => {
+      row.hidden = selected !== 'All' && row.dataset.theme !== selected;
+      if (!row.hidden) count++;
+      list?.append(row);
+    });
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeFilter === selected)));
+    if (status) status.textContent = `${count} ${count === 1 ? 'Iesue' : 'Iesues'}${selected === 'All' ? ' across the Four Yeses' : ` in the ${selected}`}`;
+  };
+  const readURL = () => {
+    const params = new URLSearchParams(location.search);
+    selected = themes.includes(params.get('theme') ?? '') ? params.get('theme')! : 'All';
+    if (order) order.value = params.get('order') === 'newest' ? 'newest' : 'oldest';
+    apply();
+  };
+  const updateURL = () => {
+    const url = new URL(location.href);
+    selected === 'All' ? url.searchParams.delete('theme') : url.searchParams.set('theme', selected);
+    order?.value === 'newest' ? url.searchParams.set('order', 'newest') : url.searchParams.delete('order');
+    history.replaceState(null, '', url);
+    apply();
+  };
+  buttons.forEach(button => button.addEventListener('click', () => { selected = button.dataset.themeFilter!; updateURL(); }));
+  order?.addEventListener('change', updateURL);
+  window.addEventListener('popstate', readURL);
+  readURL();
+  if (tools) tools.hidden = false;
+</script>
