@@ -53,13 +53,13 @@ Strength, then, is not simply force held in reserve. It is capacity placed under
 
 ## Private discipline, public consequences
 
-Marcus Aurelius wrote the reflections now called the *Meditations* while carrying an office whose private failures could become public consequences. The location notes attached to its early books place at least part of that writing around Carnuntum and the country of the Quadi, near a military frontier. We should resist turning every sentence into a battlefield maxim. [[1]](#note-1)
+Marcus Aurelius wrote the reflections now called the *Meditations* while carrying an office whose private failures could become public consequences. The location notes attached to its early books place at least part of that writing around Carnuntum and the country of the Quadi, near a military frontier. We should resist turning every sentence into a battlefield maxim. <a class="citation" href="#note-1" aria-label="Source 1">[1]</a>
 
 The setting matters less as heroic scenery than as a reminder. His philosophy was not merely an inward retreat. It was maintenance for a person whose decisions reached far beyond himself.
 
 In Book 6, in George Long’s translation, Marcus makes the social direction of virtue unusually plain:
 
-> “That which is not good for the swarm, neither is it good for the bee.” [[2]](#note-2)
+> “That which is not good for the swarm, neither is it good for the bee.” <a class="citation" href="#note-2" aria-label="Source 2">[2]</a>
 
 The sentence is not a licence for sacrificing every person to whatever a group declares necessary. Stoic cosmopolitanism is more demanding than institutional obedience. The point is that a good life cannot be assessed as though the individual were sealed away from the human whole. Self-command has public purpose.
 
@@ -73,21 +73,21 @@ Eastern and Western traditions do not form a single chorus. They disagree about 
 
 Still, careful comparison can reveal a demanding family resemblance.
 
-In *Analects* 6.30, Confucius describes humane excellence relationally: the person seeking to establish himself also helps others establish themselves; the person seeking attainment also helps others attain. [[3]](#note-3) This is not modern “servant leadership” hidden in an ancient text. It belongs to a Confucian account of *ren*, cultivated conduct, and reciprocal human relations. Yet it unsettles the fantasy that my development can be measured without asking what happens to the people beside me.
+In *Analects* 6.30, Confucius describes humane excellence relationally: the person seeking to establish himself also helps others establish themselves; the person seeking attainment also helps others attain. <a class="citation" href="#note-3" aria-label="Source 3">[3]</a> This is not modern “servant leadership” hidden in an ancient text. It belongs to a Confucian account of *ren*, cultivated conduct, and reciprocal human relations. Yet it unsettles the fantasy that my development can be measured without asking what happens to the people beside me.
 
-The *Daodejing* offers a different challenge. Chapter 17 imagines the best ruler as scarcely known; when the work is completed, the people understand the achievement as their own. [[4]](#note-4) Translations differ, and the Daoist suspicion of forcing cannot simply be folded into a management technique. But the passage gives us a searching test of intervention: **does my help enlarge another person’s agency, or make my importance the centre of the story?**
+The *Daodejing* offers a different challenge. Chapter 17 imagines the best ruler as scarcely known; when the work is completed, the people understand the achievement as their own. <a class="citation" href="#note-4" aria-label="Source 4">[4]</a> Translations differ, and the Daoist suspicion of forcing cannot simply be folded into a management technique. But the passage gives us a searching test of intervention: **does my help enlarge another person’s agency, or make my importance the centre of the story?**
 
 Confucian cultivation and Daoist non-coercion are not identical. Neither is identical to Stoic duty. Their productive tension is the lesson. Strength can be relational without becoming intrusive. Leadership can be consequential without becoming possessive. Service can be real even when the server is no longer visible.
 
 ## The service reversal
 
-Modern leadership language often begins with the leader: vision, presence, influence, results. Robert Greenleaf reversed the sequence in his 1970 essay *The Servant as Leader*. “The servant-leader is servant first,” he wrote. [[5]](#note-5)
+Modern leadership language often begins with the leader: vision, presence, influence, results. Robert Greenleaf reversed the sequence in his 1970 essay *The Servant as Leader*. “The servant-leader is servant first,” he wrote. <a class="citation" href="#note-5" aria-label="Source 5">[5]</a>
 
 The short phrase is memorable; Greenleaf’s test is more important. Ask what happens to the people served. Do they grow? Do they become wiser, freer, more autonomous, and more capable of serving in turn? What happens to those with the least privilege?
 
 This moves service beyond the leader’s intention. Feeling generous is not evidence of having helped. The consequence belongs in the definition.
 
-Martin Luther King Jr. made a related move in his 1968 sermon “The Drum Major Instinct.” He did not pretend that the desire for distinction could simply be deleted from human character. He showed how the hunger to be first can harden into superiority, exclusion, and racial injustice. He also showed how ambition might be reordered toward love, justice, and service. [[6]](#note-6)
+Martin Luther King Jr. made a related move in his 1968 sermon “The Drum Major Instinct.” He did not pretend that the desire for distinction could simply be deleted from human character. He showed how the hunger to be first can harden into superiority, exclusion, and racial injustice. He also showed how ambition might be reordered toward love, justice, and service. <a class="citation" href="#note-6" aria-label="Source 6">[6]</a>
 
 Reordered, not erased.
 
@@ -99,9 +99,9 @@ The question is not whether you possess strength. It is whether your strength ha
 
 The contemporary evidence on servant leadership is broadly encouraging, but methodologically untidy.
 
-A systematic review by Nathan Eva and colleagues examined 285 articles published between 1998 and 2018. The authors found a growing literature, but also conceptual overlap and inconsistent measurement; they evaluated 16 different instruments and called for greater theoretical clarity. [[7]](#note-7) In other words, popularity had outrun precision.
+A systematic review by Nathan Eva and colleagues examined 285 articles published between 1998 and 2018. The authors found a growing literature, but also conceptual overlap and inconsistent measurement; they evaluated 16 different instruments and called for greater theoretical clarity. <a class="citation" href="#note-7" aria-label="Source 7">[7]</a> In other words, popularity had outrun precision.
 
-A later meta-analysis by Allan Lee and colleagues synthesized 130 independent studies. Servant leadership showed positive associations with follower attitudes and behaviours, and added predictive value beyond transformational, ethical, and authentic leadership in several analyses. Trust, perceptions of fairness, and leader–follower relationships appeared to help explain some of those associations. [[8]](#note-8)
+A later meta-analysis by Allan Lee and colleagues synthesized 130 independent studies. Servant leadership showed positive associations with follower attitudes and behaviours, and added predictive value beyond transformational, ethical, and authentic leadership in several analyses. Trust, perceptions of fairness, and leader–follower relationships appeared to help explain some of those associations. <a class="citation" href="#note-8" aria-label="Source 8">[8]</a>
 
 That is evidence worth taking seriously. It is not proof that announcing a service ethic causes every good outcome. Much of this literature relies on nonexperimental, self-report, or cross-sectional designs. Concepts overlap. Contexts vary. A professor should not turn correlation into canon simply because the result is attractive.
 
@@ -124,9 +124,9 @@ Service has a shadow because moral language can disguise unhealthy arrangements.
 
 An organization can celebrate helpfulness while quietly depending on the same conscientious people to absorb understaffing. A leader can “help” by taking over, then wonder why others wait to be rescued. A teacher can answer every difficult question and deprive students of the struggle through which judgment develops. A family can call one person reliable until reliability becomes captivity.
 
-Research on prosocial behaviour at work cautions against treating other-oriented action as uniformly beneficial. Mark Bolino and Adam Grant’s major review maps both the bright side of prosociality and its costs, unintended consequences, and contested effects. [[9]](#note-9) More recent daily research distinguishes freely chosen extra-role behaviour from *citizenship pressure*, which is the felt demand to go beyond one’s role. In that study, pressure was associated with greater fatigue than the behaviour itself, with consequences reaching evening interactions with a spouse. [[10]](#note-10)
+Research on prosocial behaviour at work cautions against treating other-oriented action as uniformly beneficial. Mark Bolino and Adam Grant’s major review maps both the bright side of prosociality and its costs, unintended consequences, and contested effects. <a class="citation" href="#note-9" aria-label="Source 9">[9]</a> More recent daily research distinguishes freely chosen extra-role behaviour from *citizenship pressure*, which is the felt demand to go beyond one’s role. In that study, pressure was associated with greater fatigue than the behaviour itself, with consequences reaching evening interactions with a spouse. <a class="citation" href="#note-10" aria-label="Source 10">[10]</a>
 
-Even the recipient can be diminished by badly designed help. Young Eun Lee and colleagues distinguish **empowering help**, which gives people tools for greater self-reliance, from **nonempowering help**, which supplies an immediate solution. Their studies show why the same act can be experienced differently, including through gendered competence stereotypes. [[11]](#note-11) A 2026 study similarly found that dependent help could carry motivational costs for later creativity, whereas autonomy-supporting help worked differently through intrinsic motivation. [[12]](#note-12)
+Even the recipient can be diminished by badly designed help. Young Eun Lee and colleagues distinguish **empowering help**, which gives people tools for greater self-reliance, from **nonempowering help**, which supplies an immediate solution. Their studies show why the same act can be experienced differently, including through gendered competence stereotypes. <a class="citation" href="#note-11" aria-label="Source 11">[11]</a> A 2026 study similarly found that dependent help could carry motivational costs for later creativity, whereas autonomy-supporting help worked differently through intrinsic motivation. <a class="citation" href="#note-12" aria-label="Source 12">[12]</a>
 
 No single study settles how to help. Together they expose the assumption we must refuse: that the giver’s benevolent intention guarantees the receiver’s good.
 
