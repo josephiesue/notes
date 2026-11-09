@@ -1,9 +1,9 @@
 ---
-title: "Rewarding A While Hoping for B"
+title: "When Rewards Undermine Values"
 description: "People notice the consequences of their actions. When those consequences conflict with an organization's stated values, the values lose credibility."
-date: "2026-06-01"
+date: "2026-06-15"
 updated: "2026-11-09"
-published: "2026-11-09"
+published: "2026-06-15"
 format: "iesue"
 iesue: 7
 theme: "Ground"

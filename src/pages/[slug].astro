@@ -9,11 +9,10 @@ export async function getStaticPaths() {
 }
 const { note } = Astro.props;
 const { Content } = await note.render();
-const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
+const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric', timeZone:'UTC' });
 const topicSlug = note.data.topic.toLowerCase().replace(/\s+/g,'-');
 const noteLabel = publicationLabel(note.data.format, note.data.iesue);
 const isIesue = note.data.format === 'iesue';
-const month = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 const series = (await getCollection('notes', ({ data }) => !data.draft && data.format === 'iesue')).sort((a,b) => a.data.iesue! - b.data.iesue!);
 const position = series.findIndex(item => item.slug === note.slug);
 const previous = position > 0 ? series[position - 1] : null;
@@ -34,7 +33,7 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
       <h1>{note.data.title}</h1>
       <p class="article-dek">{note.data.description}</p>
       <div class="article-meta">
-        <time datetime={note.data.date.toISOString()}>{isIesue ? `${month.format(note.data.date)} edition` : fmt.format(note.data.date)}</time>
+        <time datetime={note.data.date.toISOString()}>{isIesue ? `Published ${fmt.format(note.data.published ?? note.data.date)}` : fmt.format(note.data.date)}</time>
         <span>Joseph E. Iesue</span>
         {isIesue && <span>≈ {readingMinutes} min read</span>}
       </div>

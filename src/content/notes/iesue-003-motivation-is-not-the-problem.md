@@ -1,9 +1,9 @@
 ---
 title: "Motivation Is Not the Problem"
 description: "Before deciding that someone needs to try harder, look at what happens when they do."
-date: "2026-02-01"
+date: "2026-02-15"
 updated: "2026-11-09"
-published: "2026-11-09"
+published: "2026-02-15"
 format: "iesue"
 iesue: 3
 theme: "Ground"

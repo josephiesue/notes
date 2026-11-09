@@ -1,9 +1,9 @@
 ---
 title: "Passion Is Made Not Found"
 description: "Interest can grow as you learn. Before treating a difficult start as a reason to leave, look at what the difficulty is telling you."
-date: "2026-03-01"
+date: "2026-03-15"
 updated: "2026-11-09"
-published: "2026-11-09"
+published: "2026-03-15"
 format: "iesue"
 iesue: 4
 theme: "Path"

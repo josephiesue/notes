@@ -1,8 +1,8 @@
 ---
 title: What Is Your Strength For?
 description: Strength is not defined by what it can carry, but by what it protects. Service should leave other people more capable and free.
-date: 2025-12-01
-published: 2026-07-20
+date: "2025-12-15"
+published: "2025-12-15"
 updated: 2026-11-09
 theme: Weight
 format: iesue

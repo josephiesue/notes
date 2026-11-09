@@ -1,9 +1,9 @@
 ---
 title: "The Case Against Knowing Yourself"
 description: "Understanding yourself takes more than a convincing explanation. It takes a close look at what happened and a willingness to hear what other people saw."
-date: "2026-01-01"
+date: "2026-01-15"
 updated: "2026-11-09"
-published: "2026-11-09"
+published: "2026-01-15"
 format: "iesue"
 iesue: 2
 theme: "Mirror"

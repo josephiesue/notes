@@ -1,9 +1,9 @@
 ---
 title: "Feedback Is Not a Gift"
 description: "Useful criticism helps someone understand the work and improve it. Good intentions do not guarantee that result."
-date: "2026-04-01"
+date: "2026-04-15"
 updated: "2026-11-09"
-published: "2026-11-09"
+published: "2026-04-15"
 format: "iesue"
 iesue: 5
 theme: "Weight"

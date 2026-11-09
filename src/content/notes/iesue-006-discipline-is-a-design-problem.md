@@ -1,9 +1,9 @@
 ---
 title: "Discipline Is a Design Problem"
 description: "A routine can make a commitment easier to keep. Start with the moment when your plan usually falls apart."
-date: "2026-05-01"
+date: "2026-05-15"
 updated: "2026-11-09"
-published: "2026-11-09"
+published: "2026-05-15"
 format: "iesue"
 iesue: 6
 theme: "Mirror"

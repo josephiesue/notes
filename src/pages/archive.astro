@@ -5,7 +5,7 @@ import { publicationShortLabel } from '../lib/publication';
 const notes = (await getCollection('notes', ({data}) => !data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
 const iesues = notes.filter(note => note.data.format === 'iesue').sort((a,b)=>a.data.iesue!-b.data.iesue!);
 const other = notes.filter(note => note.data.format !== 'iesue');
-const month = new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
+const month = new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
 const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
 ---
 <BaseLayout title="The archive" description="The monthly Iesues of The Yes-Way. Essays on self-awareness, service, learning, and choosing your own path.">
