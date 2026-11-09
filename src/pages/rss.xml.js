@@ -7,6 +7,6 @@ export async function GET(context) {
     title: 'The Yes-Way | Joseph E. Iesue',
     description: 'Strength to serve. Service to grow. Iesues, Practical Notes, Seminar Notes, Case Notes, and Marginalia from Joseph E. Iesue.',
     site: context.site,
-    items: notes.map(note => ({ title:note.data.title, description:note.data.description, pubDate:note.data.date, link:`/${note.slug}/` })),
+    items: notes.map(note => ({ title:note.data.title, description:note.data.description, pubDate:note.data.published ?? note.data.date, link:`/${note.slug}/` })),
   });
 }

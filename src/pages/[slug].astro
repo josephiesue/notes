@@ -13,6 +13,11 @@ const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year
 const topicSlug = note.data.topic.toLowerCase().replace(/\s+/g,'-');
 const noteLabel = publicationLabel(note.data.format, note.data.iesue);
 const isIesue = note.data.format === 'iesue';
+const month = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+const series = (await getCollection('notes', ({ data }) => !data.draft && data.format === 'iesue')).sort((a,b) => a.data.iesue! - b.data.iesue!);
+const position = series.findIndex(item => item.slug === note.slug);
+const previous = position > 0 ? series[position - 1] : null;
+const next = position >= 0 ? series[position + 1] : null;
 const wordCount = note.body
   .replace(/<[^>]*>/g, ' ')
   .replace(/\[[^\]]*\]\([^)]*\)/g, ' ')
@@ -20,17 +25,20 @@ const wordCount = note.body
   .filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
 ---
-<BaseLayout title={note.data.title} description={note.data.description} type="article" publishedTime={note.data.date}>
+<BaseLayout title={note.data.title} description={note.data.description} type="article" publishedTime={note.data.published ?? note.data.date} updatedTime={note.data.updated}>
   <article class:list={['article-shell', { 'iesue-article': isIesue }] }>
     <header class="article-header reveal is-visible">
+      {isIesue && <a class="series-back" href="/archive/#iesues">← The monthly Iesues</a>}
       <div class="article-kicker"><a class="article-topic" href={`/topics/${topicSlug}/`}>{note.data.topic}</a><span>{noteLabel}</span></div>
+      {note.data.theme && <p class="theme-label">The {note.data.theme}</p>}
       <h1>{note.data.title}</h1>
       <p class="article-dek">{note.data.description}</p>
       <div class="article-meta">
-        <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
+        <time datetime={note.data.date.toISOString()}>{isIesue ? `${month.format(note.data.date)} edition` : fmt.format(note.data.date)}</time>
         <span>Joseph E. Iesue</span>
         {isIesue && <span>≈ {readingMinutes} min read</span>}
       </div>
+      {note.data.updated && <p class="edition-update">Updated {fmt.format(note.data.updated)}</p>}
     </header>
     {isIesue && note.data.outline && (
       <nav class="iesue-contents reveal is-visible" aria-label="In this Iesue">
@@ -43,9 +51,13 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
       </nav>
     )}
     <div class="prose reveal is-visible"><Content /></div>
+    {isIesue && <nav class="issue-navigation" aria-label="Continue reading">
+      {previous ? <a href={`/${previous.slug}/`}><small>← Iesue {String(previous.data.iesue).padStart(3,'0')}</small><strong>{previous.data.title}</strong></a> : <a href="/about/"><small>Start here</small><strong>A way to put your strength to use</strong></a>}
+      {next ? <a href={`/${next.slug}/`}><small>Iesue {String(next.data.iesue).padStart(3,'0')} →</small><strong>{next.data.title}</strong></a> : <a href="/archive/#iesues"><small>Explore the series →</small><strong>Find your next question</strong></a>}
+    </nav>}
     <footer class="article-end">
       <span>Strength to serve. Service to grow.</span>
-      <a href="/archive/">All notes →</a>
+      <a href="/archive/">Explore the archive →</a>
     </footer>
   </article>
 </BaseLayout>

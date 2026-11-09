@@ -5,9 +5,11 @@ import Subscribe from '../components/Subscribe.astro';
 
 const notes = (await getCollection('notes', ({ data }) => !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
 const iesues = notes.filter(note => note.data.format === 'iesue');
-const featured = iesues.find(note => note.data.featured) ?? iesues[0];
+const featured = iesues[0];
+const recentIesues = iesues.slice(1, 5);
 const recent = notes.filter(note => note.data.format === 'practical').slice(0, 4);
 const fmt = new Intl.DateTimeFormat('en-US', { month:'long', day:'numeric', year:'numeric' });
+const month = new Intl.DateTimeFormat('en-US', { month:'long', year:'numeric', timeZone:'UTC' });
 const iesueNumber = (number: number) => String(number).padStart(3, '0');
 const fourYeses = [
   { title: 'The Mirror', copy: 'Develops the self.' },
@@ -34,12 +36,19 @@ const fourYeses = [
       <div class="edition-rule"><i></i></div>
       <article class="edition-copy">
         <h2 id="featured-title"><a href={`/${featured.slug}/`}>{featured.data.title}</a></h2>
-        <p class="edition-meta"><time datetime={featured.data.date.toISOString()}>{fmt.format(featured.data.date)}</time></p>
+        <p class="edition-meta"><time datetime={featured.data.date.toISOString()}>{month.format(featured.data.date)} edition</time></p>
         <p>{featured.data.description}</p>
         <a class="text-link" href={`/${featured.slug}/`}>Read the Iesue <span aria-hidden="true">→</span></a>
       </article>
     </section>}
   </div>
+
+  {recentIesues.length > 0 && <section class="home-series" aria-labelledby="home-series-title">
+    <header class="section-heading"><div><p class="theme-label">Keep exploring</p><h2 id="home-series-title">From the Iesues</h2></div><a href="/archive/#iesues">The complete series →</a></header>
+    <div class="issue-grid">{recentIesues.map(note => <a class="issue-card" href={`/${note.slug}/`}>
+      <div><span>№{iesueNumber(note.data.iesue!)}</span><small>The {note.data.theme}</small></div><h3>{note.data.title}</h3><p>{note.data.description}</p><footer><time datetime={note.data.date.toISOString()}>{month.format(note.data.date)}</time><span aria-hidden="true">↗</span></footer>
+    </a>)}</div>
+  </section>}
 
   <div class="principles-field">
     <section class="four-yeses reveal" id="four-yeses" aria-labelledby="four-yeses-title">

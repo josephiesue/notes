@@ -9,6 +9,8 @@ const notes = defineCollection({
     format: z.enum(['iesue', 'practical', 'seminar', 'case', 'marginalia']),
     iesue: z.number().int().min(1).optional(),
     updated: z.coerce.date().optional(),
+    published: z.coerce.date().optional(),
+    theme: z.enum(["Mirror", "Weight", "Ground", "Path"]).optional(),
     topic: z.string(),
     tags: z.array(z.string()).default([]),
     outline: z.array(z.object({
