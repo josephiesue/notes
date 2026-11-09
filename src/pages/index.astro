@@ -44,7 +44,7 @@ const fourYeses = [
   </div>
 
   {recentIesues.length > 0 && <section class="home-series" aria-labelledby="home-series-title">
-    <header class="section-heading"><div><p class="theme-label">Keep exploring</p><h2 id="home-series-title">From the Iesues</h2></div><a href="/archive/#iesues">The complete series →</a></header>
+    <header class="section-heading"><div><p class="theme-label">Keep exploring</p><h2 id="home-series-title">PAST IESUES</h2></div><a href="/archive/#iesues">The complete series →</a></header>
     <div class="issue-grid">{recentIesues.map(note => <a class="issue-card" href={`/${note.slug}/`}>
       <div><span>№{iesueNumber(note.data.iesue!)}</span><small>The {note.data.theme}</small></div><h3>{note.data.title}</h3><p>{note.data.description}</p><footer><time datetime={note.data.date.toISOString()}>{month.format(note.data.date)}</time><span aria-hidden="true">↗</span></footer>
     </a>)}</div>
