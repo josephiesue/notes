@@ -24,52 +24,59 @@ const wordCount = note.body
   .filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
 ---
-<BaseLayout socialImage={`/social/${note.slug}.png`} title={note.data.title} description={note.data.description} type="article" publishedTime={note.data.published ?? note.data.date} updatedTime={note.data.updated}>
-  <article data-theme={note.data.theme} class:list={['article-shell', { 'iesue-article': isIesue }] }>
-    <header class="article-header reveal is-visible">
-      {isIesue && <a class="series-back" href="/archive/#iesues">← The monthly Iesues</a>}
-      <div class="article-kicker"><a class="article-topic" href={`/topics/${topicSlug}/`}>{note.data.topic}</a><span>{noteLabel}</span></div>
-      {note.data.theme && <p class="theme-label">The {note.data.theme}</p>}
-      <h1>{note.data.title}</h1>
-      <p class="article-dek">{note.data.description}</p>
-      <div class="article-meta">
-        <time datetime={note.data.date.toISOString()}>{isIesue ? `Published ${fmt.format(note.data.published ?? note.data.date)}` : fmt.format(note.data.date)}</time>
-        <span>Joseph E. Iesue</span>
-        {isIesue && <span>≈ {readingMinutes} min read</span>}
+<BaseLayout scene="article" socialImage={`/social/${note.slug}.png`} title={note.data.title} description={note.data.description} type="article" publishedTime={note.data.published ?? note.data.date} updatedTime={note.data.updated}>
+  <div class="progress" data-progress aria-hidden="true"></div>
+  <article class:list={['article', { 'iesue-article': isIesue }]} data-yes={note.data.theme}>
+    <div class="wrap">
+      <header class="article-head">
+        {isIesue && <a class="series-back" href="/archive/#iesues">← The monthly Iesues</a>}
+        <div class="kicker">
+          <span>{noteLabel}</span>
+          {note.data.theme && <a class="theme" href={`/archive/?theme=${note.data.theme}#iesues`}>The {note.data.theme}</a>}
+          <a href={`/topics/${topicSlug}/`}>{note.data.topic}</a>
+        </div>
+        <h1>{note.data.title}</h1>
+        <p class="dek">{note.data.description}</p>
+        <div class="article-meta">
+          <time datetime={note.data.date.toISOString()}>{isIesue ? `Published ${fmt.format(note.data.published ?? note.data.date)}` : fmt.format(note.data.date)}</time>
+          <span>Joseph E. Iesue</span>
+          <span>≈ {readingMinutes} min read</span>
+        </div>
+        {note.data.updated && <p class="edition-update">Updated {fmt.format(note.data.updated)}</p>}
+        <div class="article-divider" aria-hidden="true"><img src="/emblem-gold.svg" alt="" width="26" height="26" /></div>
+      </header>
+
+      <div class="article-body">
+        {isIesue && note.data.outline && (
+          <nav class="toc" aria-label="In this Iesue">
+            <details open>
+              <summary>In this Iesue <span aria-hidden="true">+</span></summary>
+              <ol>{note.data.outline.map((item) => <li><a href={`#${item.id}`}>{item.label}</a></li>)}</ol>
+            </details>
+          </nav>
+        )}
+        <div class="prose-panel"><div class="prose"><Content /></div></div>
       </div>
-      {note.data.updated && <p class="edition-update">Updated {fmt.format(note.data.updated)}</p>}
-    </header>
-    {isIesue && note.data.outline && (
-      <nav class="iesue-contents reveal is-visible" aria-label="In this Iesue">
-        <details open>
-        <summary>In this Iesue <span aria-hidden="true">+</span></summary>
-        <ol>
-          {note.data.outline.map((item) => (
-            <li><a href={`#${item.id}`}>{item.label}</a></li>
-          ))}
-        </ol>
-        </details>
-      </nav>
-    )}
-    <div class="prose reveal is-visible"><Content /></div>
-    {isIesue && <nav class="issue-navigation" aria-label="Continue reading">
-      {previous ? <a href={`/${previous.slug}/`}><small>← Iesue {String(previous.data.iesue).padStart(3,'0')}</small><strong>{previous.data.title}</strong></a> : <a href="/about/"><small>Start here</small><strong>A way to put your strength to use</strong></a>}
-      {next ? <a href={`/${next.slug}/`}><small>Iesue {String(next.data.iesue).padStart(3,'0')} →</small><strong>{next.data.title}</strong></a> : <a href="/archive/#iesues"><small>Explore the series →</small><strong>Find your next question</strong></a>}
-    </nav>}
-    <footer class="article-end">
-      <span>Strength to serve. Service to grow.</span>
-      <a href="/archive/">Explore the archive →</a>
-    </footer>
+
+      {isIesue && <nav class="issue-nav" aria-label="Continue reading">
+        {previous ? <a class="panel glow-card" href={`/${previous.slug}/`}><small>← Iesue {String(previous.data.iesue).padStart(3, '0')}</small><strong>{previous.data.title}</strong></a> : <a class="panel glow-card" href="/about/"><small>Start here</small><strong>A way to put your strength to use</strong></a>}
+        {next ? <a class="panel glow-card" href={`/${next.slug}/`}><small>Iesue {String(next.data.iesue).padStart(3, '0')} →</small><strong>{next.data.title}</strong></a> : <a class="panel glow-card" href="/archive/#iesues"><small>Explore the series →</small><strong>Find your next question</strong></a>}
+      </nav>}
+      <footer class="article-end">
+        <span>Strength to serve. Service to grow.</span>
+        <a href="/archive/">Explore the archive →</a>
+      </footer>
+    </div>
   </article>
 </BaseLayout>
 
 <script>
-  const contents = document.querySelector<HTMLDetailsElement>('.iesue-contents details');
-  const compact = window.matchMedia('(max-width: 1000px)');
+  const contents = document.querySelector<HTMLDetailsElement>('.toc details');
+  const compact = window.matchMedia('(max-width: 1180px)');
   const setContents = () => { if (contents) contents.open = !compact.matches; };
   setContents();
   compact.addEventListener('change', setContents);
-  const links = [...document.querySelectorAll<HTMLAnchorElement>('.iesue-contents a')];
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
   const headings = links.map(link => document.getElementById(link.hash.slice(1))).filter(Boolean) as HTMLElement[];
   let queued = false;
   const markSection = () => {
@@ -89,4 +96,17 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
       if (!queued) { queued = true; requestAnimationFrame(markSection); }
     }, { passive: true });
   }
+  const bar = document.querySelector<HTMLElement>('[data-progress]');
+  const body = document.querySelector<HTMLElement>('.prose');
+  let ticking = false;
+  const progress = () => {
+    if (bar && body) {
+      const r = body.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - window.innerHeight * 0.6)));
+      bar.style.setProperty('--p', p.toFixed(4));
+    }
+    ticking = false;
+  };
+  progress();
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(progress); } }, { passive: true });
 </script>

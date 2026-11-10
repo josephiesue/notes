@@ -1,18 +1,24 @@
 ---
-import Emblem from './Emblem.astro';
 ---
 <footer class="site-footer">
-  <div class="footer-main">
-    <a class="footer-brand" href="/">
-      <Emblem size={44} />
-      <span><strong>The Yes-Way</strong><small>Written by Joseph E. Iesue</small></span>
-    </a>
-    <nav aria-label="Footer navigation">
-      <a href="/about/">Start here</a><a href="/archive/">Archive</a><a href="/topics/">Topics</a><a href="/rss.xml">RSS</a>
+  <div class="wrap footer-main">
+    <div>
+      <a class="footer-brand" href="/">
+        <img src="/emblem-gold.svg" alt="" width="48" height="48" />
+        <span><strong>The Yes-Way</strong><small>Written by Joseph E. Iesue</small></span>
+      </a>
+      <p class="footer-motto">Strength to serve.<br />Service to grow.</p>
+    </div>
+    <nav class="footer-col" aria-label="Read">
+      <h4>Read</h4>
+      <a href="/about/">Start here</a><a href="/archive/">Archive</a><a href="/topics/">Topics</a><a href="/rss.xml">RSS feed</a>
+    </nav>
+    <nav class="footer-col" aria-label="Elsewhere">
+      <h4>Elsewhere</h4>
       <a href="https://josephiesue.com" target="_blank" rel="noopener">josephiesue.com ↗</a>
       <a href="https://entr.cc" target="_blank" rel="noopener">entr.cc ↗</a>
+      <a href="https://www.linkedin.com/in/josephiesue" target="_blank" rel="noopener">LinkedIn ↗</a>
     </nav>
-    <p>Strength to serve.<br />Service to grow.</p>
   </div>
-  <div class="footer-legal"><span>© {new Date().getFullYear()} Joseph E. Iesue</span><span>The Yes-Way</span></div>
+  <div class="wrap footer-legal"><span>© {new Date().getFullYear()} Joseph E. Iesue</span><span>notes.josephiesue.com</span></div>
 </footer>

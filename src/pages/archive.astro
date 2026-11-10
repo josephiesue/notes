@@ -2,44 +2,54 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { publicationShortLabel } from '../lib/publication';
-const notes = (await getCollection('notes', ({data}) => !data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
-const iesues = notes.filter(note => note.data.format === 'iesue').sort((a,b)=>a.data.iesue!-b.data.iesue!);
-const other = notes.filter(note => note.data.format !== 'iesue');
-const month = new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
-const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+const notes = (await getCollection('notes', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const iesues = notes.filter((note) => note.data.format === 'iesue').sort((a, b) => a.data.iesue! - b.data.iesue!);
+const other = notes.filter((note) => note.data.format !== 'iesue');
+const month = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const fmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 <BaseLayout title="The archive" description="The monthly Iesues of The Yes-Way. Essays on self-awareness, service, learning, and choosing your own path.">
-  <section class="journal-intro">
-    <p class="theme-label">The Yes-Way / Collected writing</p>
-    <h1>A practice.<br />One Iesue at a time.</h1>
+  <section class="page-intro wrap">
+    <p class="eyebrow">The Yes-Way / Collected writing</p>
+    <h1>A practice.<br /><span class="gold-text">One Iesue at a time.</span></h1>
     <p>Questions worth staying with. Research, reflection, and practical ways to bring more care to how we learn, lead, and live.</p>
-    <div class="journal-index"><a href="#iesues">{iesues.length} monthly Iesues ↓</a><a href="#practical">Practical notes ↓</a><a href="/topics/">Explore by topic →</a></div>
+    <div class="jump"><a href="#iesues">{iesues.length} monthly Iesues ↓</a><a href="#practical">Practical notes ↓</a><a href="/topics/">Explore by topic →</a></div>
   </section>
-  <section class="series-archive" id="iesues" aria-labelledby="series-title">
-    <header class="section-heading"><div><p class="theme-label">The monthly series</p><h2 id="series-title">The Iesues</h2></div><span>Begin at 001. Follow your questions.</span></header>
-    <div class="journal-tools" hidden>
-      <div class="theme-filters" role="group" aria-label="Filter Iesues by theme">
-        {['All', 'Mirror', 'Ground', 'Path', 'Weight'].map(theme => <button type="button" data-theme-filter={theme} aria-pressed={theme === 'All' ? 'true' : 'false'}>{theme === 'All' ? 'All Iesues' : `The ${theme}`}</button>)}
+
+  <section class="section wrap" id="iesues" aria-labelledby="series-title" style="padding-top:20px">
+    <header class="section-head"><div><p class="eyebrow">The monthly series</p><h2 id="series-title">The Iesues</h2></div><p>Begin at 001. Follow your questions.</p></header>
+    <div class="tools" data-tools hidden>
+      <div class="chips" role="group" aria-label="Filter Iesues by theme">
+        {['All', 'Mirror', 'Weight', 'Ground', 'Path'].map((theme) => <button type="button" data-theme-filter={theme} data-yes={theme === 'All' ? undefined : theme} aria-pressed={theme === 'All' ? 'true' : 'false'}>{theme === 'All' ? 'All Iesues' : `The ${theme}`}</button>)}
       </div>
-      <label class="issue-sort">Order <select id="issue-order"><option value="oldest">Start at 001</option><option value="newest">Newest first</option></select></label>
+      <label class="sort">Order <select id="issue-order"><option value="oldest">Start at 001</option><option value="newest">Newest first</option></select></label>
       <p class="filter-status" role="status" aria-live="polite"></p>
     </div>
     <ol class="issue-list">
-      {iesues.map(note => <li data-theme={note.data.theme ?? 'Weight'} data-issue={note.data.iesue}><a href={`/${note.slug}/`}>
-        <span class="issue-index">{String(note.data.iesue).padStart(3,'0')}</span>
-        <div class="issue-detail"><small>The {note.data.theme ?? 'Weight'}</small><h3>{note.data.title}</h3><p>{note.data.description}</p></div>
-        <div class="issue-date"><time datetime={note.data.date.toISOString()}>{month.format(note.data.date)}</time><span aria-hidden="true">↗</span></div>
+      {iesues.map((note) => <li data-theme={note.data.theme ?? 'Weight'} data-issue={note.data.iesue} data-yes={note.data.theme ?? 'Weight'}><a class="panel glow-card" href={`/${note.slug}/`}>
+        <span class="idx">{String(note.data.iesue).padStart(3, '0')}</span>
+        <div><span class="pill">The {note.data.theme ?? 'Weight'}</span><h3>{note.data.title}</h3><p>{note.data.description}</p></div>
+        <div class="date"><time datetime={note.data.date.toISOString()}>{month.format(note.data.date)}</time><span aria-hidden="true">↗</span></div>
       </a></li>)}
     </ol>
   </section>
-  <section class="practical-archive" id="practical" aria-labelledby="practical-title">
-    <header class="section-heading"><div><p class="theme-label">Along the way</p><h2 id="practical-title">Practical notes</h2></div></header>
-    <ol class="archive-list">{other.map(note => <li><a href={`/${note.slug}/`}><span class="archive-number">{publicationShortLabel(note.data.format)}</span><div><small>{note.data.topic}</small><strong>{note.data.title}</strong><p>{note.data.description}</p></div><time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time><span aria-hidden="true">→</span></a></li>)}</ol>
+
+  <section class="section wrap" id="practical" aria-labelledby="practical-title" style="padding-top:0">
+    <header class="section-head"><div><p class="eyebrow">Along the way</p><h2 id="practical-title">Practical notes</h2></div></header>
+    <ol class="note-list">
+      {other.map((note) => <li><a href={`/${note.slug}/`}>
+        <span class="star" aria-hidden="true">✦</span>
+        <strong>{note.data.title}</strong>
+        <span class="excerpt">{publicationShortLabel(note.data.format)} · {note.data.topic}. {note.data.description}</span>
+        <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6" /></svg>
+      </a></li>)}
+    </ol>
   </section>
 </BaseLayout>
 
 <script>
-  const tools = document.querySelector<HTMLElement>('.journal-tools');
+  const tools = document.querySelector<HTMLElement>('[data-tools]');
   const list = document.querySelector<HTMLOListElement>('.issue-list');
   const rows = [...document.querySelectorAll<HTMLLIElement>('.issue-list > li')];
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-theme-filter]')];
@@ -49,12 +59,12 @@ const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'n
   let selected = 'All';
   const apply = () => {
     let count = 0;
-    rows.sort((a,b) => (Number(a.dataset.issue) - Number(b.dataset.issue)) * (order?.value === 'newest' ? -1 : 1)).forEach(row => {
+    rows.sort((a, b) => (Number(a.dataset.issue) - Number(b.dataset.issue)) * (order?.value === 'newest' ? -1 : 1)).forEach((row) => {
       row.hidden = selected !== 'All' && row.dataset.theme !== selected;
       if (!row.hidden) count++;
       list?.append(row);
     });
-    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeFilter === selected)));
+    buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.themeFilter === selected)));
     if (status) status.textContent = `${count} ${count === 1 ? 'Iesue' : 'Iesues'}${selected === 'All' ? ' across the Four Yeses' : ` in the ${selected}`}`;
   };
   const readURL = () => {
@@ -70,7 +80,7 @@ const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'n
     history.replaceState(null, '', url);
     apply();
   };
-  buttons.forEach(button => button.addEventListener('click', () => { selected = button.dataset.themeFilter!; updateURL(); }));
+  buttons.forEach((button) => button.addEventListener('click', () => { selected = button.dataset.themeFilter!; updateURL(); }));
   order?.addEventListener('change', updateURL);
   window.addEventListener('popstate', readURL);
   readURL();

@@ -13,13 +13,21 @@ export function getStaticPaths() {
 }
 const { topic } = Astro.props;
 const notes = all.filter(note => slugify(note.data.topic) === slugify(topic)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
-const fmt = new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric'});
+const fmt = new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
 ---
 <BaseLayout title={topic} description={`Notes on ${topic.toLowerCase()} from The Yes-Way.`}>
-  <section class="page-intro">
+  <section class="page-intro wrap">
     <a class="back-link" href="/topics/">← All topics</a>
     <h1>{topic}</h1>
     <p>{notes.length} {notes.length === 1 ? 'note' : 'notes'} in this part of the path.</p>
   </section>
-  {notes.length ? <ol class="archive-list">{notes.map(note => <li><a href={`/${note.slug}/`}><span class={`archive-number archive-number--${note.data.format}`}>{publicationShortLabel(note.data.format, note.data.iesue)}</span><div><small>{note.data.topic}</small><strong>{note.data.title}</strong><p>{note.data.description}</p></div><time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time><span aria-hidden="true">→</span></a></li>)}</ol> : <p class="empty-state">Notes in this topic are coming soon.</p>}
+  <div class="wrap">
+    {notes.length ? <ol class="note-list">{notes.map((note) => <li><a href={`/${note.slug}/`}>
+      <span class="star" aria-hidden="true">✦</span>
+      <strong>{note.data.title}</strong>
+      <span class="excerpt">{publicationShortLabel(note.data.format, note.data.iesue)} · {note.data.description}</span>
+      <time datetime={note.data.date.toISOString()}>{fmt.format(note.data.date)}</time>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6" /></svg>
+    </a></li>)}</ol> : <p class="empty-state">Notes in this topic are coming soon.</p>}
+  </div>
 </BaseLayout>

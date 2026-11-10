@@ -1,8 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-import '../styles/editorial.css';
+import Subscribe from '../components/Subscribe.astro';
+import '../styles/site.css';
 
 interface Props {
   title: string;
@@ -12,6 +12,7 @@ interface Props {
   publishedTime?: Date;
   updatedTime?: Date;
   socialImage?: string;
+  scene?: 'home' | 'page' | 'article';
 }
 const {
   title,
@@ -21,6 +22,7 @@ const {
   publishedTime,
   updatedTime,
   socialImage = "/social/yes-way.png",
+  scene = 'page',
 } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site ?? 'https://notes.josephiesue.com').toString();
 const socialImageUrl = new URL(socialImage, Astro.site ?? "https://notes.josephiesue.com").toString();
@@ -81,65 +83,63 @@ const structuredData = {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="The Yes-Way" href="/rss.xml" />
     <link rel="stylesheet" href="/fonts/fonts.css" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body>
-    <div class="ambient-field" aria-hidden="true"><i></i><i></i><i></i></div>
+  <body data-scene={scene}>
+    <div class="scene-poster" aria-hidden="true"></div>
+    <canvas class="scene-canvas" data-scene-canvas aria-hidden="true"></canvas>
+    <div class="scene-vignette" aria-hidden="true"></div>
     <a class="skip-link" href="#content">Skip to content</a>
     <Header />
-    <main id="content"><slot /></main>
+    <main id="content"><slot /><Subscribe /></main>
     <Footer />
     <script>
+      // Header, menu, reveals, card light
       const header = document.querySelector('[data-header]');
-      const menuButton = document.querySelector('[data-menu-toggle]');
+      const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
       const nav = document.querySelector('[data-nav]');
-
-      menuButton?.addEventListener('click', () => {
-        const open = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', String(!open));
-        nav?.classList.toggle('is-open', !open);
-        document.body.classList.toggle('menu-open', !open);
-      });
-
-      nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-        menuButton?.setAttribute('aria-expanded', 'false');
-        nav?.classList.remove('is-open');
-        document.body.classList.remove('menu-open');
-      }));
-
+      const setMenu = (open: boolean) => {
+        menuButton?.setAttribute('aria-expanded', String(open));
+        nav?.classList.toggle('is-open', open);
+        document.body.classList.toggle('menu-open', open);
+      };
+      menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+      nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
-          menuButton.setAttribute('aria-expanded', 'false');
-          nav?.classList.remove('is-open');
-          document.body.classList.remove('menu-open');
-          (menuButton as HTMLButtonElement).focus();
-        }
+        if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') { setMenu(false); menuButton.focus(); }
       });
-      window.matchMedia('(min-width: 821px)').addEventListener('change', (event) => {
-        if (event.matches) {
-          menuButton?.setAttribute('aria-expanded', 'false');
-          nav?.classList.remove('is-open');
-          document.body.classList.remove('menu-open');
-        }
-      });
+      window.matchMedia('(min-width: 921px)').addEventListener('change', (event) => { if (event.matches) setMenu(false); });
 
-      const setHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
+      const setHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
       setHeader();
       window.addEventListener('scroll', setHeader, { passive: true });
 
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
           });
-        }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
-        document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+        }, { threshold: .1, rootMargin: '0px 0px -6% 0px' });
+        reveals.forEach((element) => observer.observe(element));
       } else {
-        document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+        reveals.forEach((element) => element.classList.add('is-visible'));
       }
+
+      document.querySelectorAll<HTMLElement>('.glow-card').forEach((card) => {
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+      });
+
+      // Three.js scene, loaded after first paint
+      const canvas = document.querySelector<HTMLCanvasElement>('[data-scene-canvas]');
+      const boot = () => import('../scripts/yesway-scene').then(({ startScene }) => canvas && startScene(canvas)).catch(() => document.documentElement.classList.add('no-webgl'));
+      if ('requestIdleCallback' in window) (window as any).requestIdleCallback(boot, { timeout: 1200 });
+      else setTimeout(boot, 300);
     </script>
   </body>
 </html>
