@@ -1,0 +1,48 @@
+---
+interface Props { title: string; description: string; slug: string; label: string; }
+const { title, description, slug, label } = Astro.props;
+const url = new URL(`/${slug}/`, Astro.site ?? 'https://notes.josephiesue.com').toString();
+const e = encodeURIComponent;
+const text = `${title} · The Yes-Way by Joseph E. Iesue`;
+const links = [
+  { name: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${e(url)}` },
+  { name: 'X', href: `https://twitter.com/intent/tweet?text=${e(text)}&url=${e(url)}` },
+  { name: 'Threads', href: `https://www.threads.net/intent/post?text=${e(`${text}\n${url}`)}` },
+  { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${e(url)}` },
+  { name: 'WhatsApp', href: `https://wa.me/?text=${e(`${text}\n${url}`)}` },
+  { name: 'Email', href: `mailto:?subject=${e(title)}&body=${e(`${description}\n\n${url}`)}` },
+];
+---
+<section class="share panel" aria-labelledby={`share-${slug}`} data-share data-url={url} data-title={text}>
+  <div class="share-head">
+    <p class="eyebrow" id={`share-${slug}`}>Share this {label}</p>
+  </div>
+  <div class="share-actions">
+    <button type="button" class="share-btn share-native" data-share-native hidden>Share…</button>
+    <button type="button" class="share-btn" data-share-copy>Copy link</button>
+    {links.map((l) => <a class="share-btn" href={l.href} target="_blank" rel="noopener" aria-label={`Share on ${l.name}`}>{l.name}</a>)}
+  </div>
+  <p class="share-images">Images for Instagram and stories:
+    <a href={`/social/square/${slug}.png`} download>Post 4:5</a>
+    <a href={`/social/story/${slug}.png`} download>Story 9:16</a>
+    <a href={`/social/${slug}.png`} download>Link card</a>
+  </p>
+  <p class="share-status" role="status" aria-live="polite"></p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-share]').forEach((box) => {
+    const url = box.dataset.url!;
+    const title = box.dataset.title!;
+    const status = box.querySelector<HTMLElement>('.share-status');
+    const say = (msg: string) => { if (status) { status.textContent = msg; setTimeout(() => (status.textContent = ''), 2600); } };
+    box.querySelector('[data-share-copy]')?.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(url); say('Link copied.'); } catch { say(url); }
+    });
+    const native = box.querySelector<HTMLButtonElement>('[data-share-native]');
+    if (native && 'share' in navigator) {
+      native.hidden = false;
+      native.addEventListener('click', () => navigator.share({ title, url }).catch(() => {}));
+    }
+  });
+</script>

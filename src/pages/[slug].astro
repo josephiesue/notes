@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { publicationLabel } from '../lib/publication';
+import ShareBar from '../components/ShareBar.astro';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes', ({ data }) => !data.draft);
@@ -57,6 +58,8 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
         )}
         <div class="prose-panel"><div class="prose"><Content /></div></div>
       </div>
+
+      <ShareBar title={note.data.title} description={note.data.description} slug={note.slug} label={isIesue ? 'Iesue' : 'note'} />
 
       {isIesue && <nav class="issue-nav" aria-label="Continue reading">
         {previous ? <a class="panel glow-card" href={`/${previous.slug}/`}><small>← Iesue {String(previous.data.iesue).padStart(3, '0')}</small><strong>{previous.data.title}</strong></a> : <a class="panel glow-card" href="/about/"><small>Start here</small><strong>A way to put your strength to use</strong></a>}

@@ -13,6 +13,7 @@ interface Props {
   updatedTime?: Date;
   socialImage?: string;
   scene?: 'home' | 'page' | 'article';
+  noindex?: boolean;
 }
 const {
   title,
@@ -23,6 +24,7 @@ const {
   updatedTime,
   socialImage = "/social/yes-way.png",
   scene = 'page',
+  noindex = false,
 } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site ?? 'https://notes.josephiesue.com').toString();
 const socialImageUrl = new URL(socialImage, Astro.site ?? "https://notes.josephiesue.com").toString();
@@ -61,7 +63,7 @@ const structuredData = {
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <meta name="author" content="Joseph E. Iesue" />
     <meta name="theme-color" content="#06090f" />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content="The Yes-Way" />
     <meta property="og:title" content={pageTitle} />
@@ -80,6 +82,8 @@ const structuredData = {
     <meta name="twitter:image" content={socialImageUrl} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:locale" content="en_US" />
+    {type === 'article' && <meta property="article:author" content="https://josephiesue.com/" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="The Yes-Way" href="/rss.xml" />
     <link rel="stylesheet" href="/fonts/fonts.css" />

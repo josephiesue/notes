@@ -519,6 +519,30 @@ main { position: relative; }
   .js .reveal { opacity: 1; transform: none; }
 }
 
+/* ---------- Share ---------- */
+.share { max-width: 760px; margin: 36px auto 0; padding: clamp(24px, 4vw, 34px); }
+.share-head .eyebrow { margin: 0; }
+.share-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.share-btn { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border: 1px solid var(--line-soft); border-radius: 999px; background: rgba(6,10,18,.5); color: var(--ink-soft); font: 600 .64rem var(--label); letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: all .3s; }
+.share-btn:hover { color: #120d03; background: var(--gold-bright); border-color: var(--gold-bright); }
+.share-native { color: #120d03; background: linear-gradient(120deg, #c89428, #f5d873); border-color: transparent; }
+.share-images { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin: 20px 0 0; padding-top: 18px; border-top: 1px solid var(--line-soft); font: 500 .9rem var(--body); color: var(--muted); }
+.share-images a { font: 600 .62rem var(--label); letter-spacing: .16em; text-transform: uppercase; }
+.share-status { margin: 10px 0 0; min-height: 1.2em; font: italic .9rem var(--body); color: var(--gold); }
+
+/* ---------- Share kit ---------- */
+.kit-item { display: grid; grid-template-columns: 1.9fr 1fr .56fr; gap: 16px; align-items: start; padding: 26px; margin-bottom: 18px; }
+.kit-item header { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+.kit-item h2 { margin: 6px 0 0; font: 600 1.4rem/1.2 var(--display); }
+.kit-item figure { margin: 0; }
+.kit-item img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line-soft); }
+.kit-item figcaption { margin-top: 8px; font: 600 .6rem var(--label); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.kit-item figcaption a { margin-left: 8px; }
+.kit-copy { grid-column: 1 / -1; display: grid; gap: 8px; }
+.kit-copy textarea { width: 100%; min-height: 128px; padding: 14px; border: 1px solid var(--line-soft); border-radius: 10px; background: rgba(3,6,11,.8); color: var(--ink-soft); font: 400 .95rem/1.5 var(--body); resize: vertical; }
+.kit-copy button { justify-self: start; }
+@media (max-width: 760px) { .kit-item { grid-template-columns: 1fr 1fr; } .kit-item figure:first-of-type { grid-column: 1 / -1; } }
+
 /* Keep the fallback reading surface clear of large logos on phones. */
 @media (max-width: 920px) {
   .no-webgl .scene-poster,
@@ -527,3 +551,5 @@ main { position: relative; }
     opacity: .45;
   }
 }
+
+.share-native[hidden] { display: none; }

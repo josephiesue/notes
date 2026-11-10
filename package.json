@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.9",
+    "@fontsource/archivo": "^5.3.0",
+    "@fontsource/cinzel": "^5.3.0",
+    "@fontsource/spectral": "^5.3.0",
     "@types/three": "^0.170.0",
     "astro": "^4.16.0",
+    "satori": "^0.12.2",
     "sharp": "0.33.5",
     "three": "^0.170.0"
   }
