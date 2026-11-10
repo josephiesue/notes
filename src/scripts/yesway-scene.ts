@@ -365,7 +365,24 @@ export function startScene(canvas: HTMLCanvasElement) {
   scene.add(stars.points);
 
   const emblem = buildEmblem();
-  scene.add(emblem.group);
+  emblem.group.visible = mode === 'home';
+  if (mode === 'home') scene.add(emblem.group);
+
+  // dawn glow where the path meets the horizon (replaces the emblem on inner pages)
+  const horizonCanvas = document.createElement('canvas');
+  horizonCanvas.width = horizonCanvas.height = 256;
+  const hc = horizonCanvas.getContext('2d')!;
+  const hg = hc.createRadialGradient(128, 128, 0, 128, 128, 128);
+  hg.addColorStop(0, 'rgba(255,205,120,.75)');
+  hg.addColorStop(0.2, 'rgba(230,165,70,.28)');
+  hg.addColorStop(0.55, 'rgba(60,90,190,.06)');
+  hg.addColorStop(1, 'rgba(0,0,0,0)');
+  hc.fillStyle = hg; hc.fillRect(0, 0, 256, 256);
+  const horizon = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(horizonCanvas), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, fog: false, toneMapped: false }));
+  horizon.scale.set(110, 14, 1);
+  horizon.position.set(0, -5.2, -46);
+  const horizonBase = { home: 0.25, page: 0.6, article: 0.35 }[mode];
+  scene.add(horizon);
 
   const key = new THREE.DirectionalLight('#fff1d0', 1.6);
   key.position.set(-4, 5, 6);
@@ -397,10 +414,6 @@ export function startScene(canvas: HTMLCanvasElement) {
     if (mode === 'home') {
       if (camera.aspect > 1.05) { layout.x = halfW * 0.44; layout.y = 0.75; layout.s = Math.min(1.25, halfH * 0.26); }
       else { layout.x = 0; layout.y = halfH * 0.5; layout.s = Math.min(0.78, halfW * 0.3); }
-    } else {
-      // a quiet mark on inner pages, high and to the side
-      if (camera.aspect > 1.05) { layout.x = halfW * 0.78; layout.y = halfH * 0.62; layout.s = 0.42; }
-      else { layout.x = halfW * 0.62; layout.y = halfH * 0.74; layout.s = 0.3; }
     }
     render(performance.now());
   };
@@ -436,9 +449,14 @@ export function startScene(canvas: HTMLCanvasElement) {
     stars.points.rotation.z = Math.sin(t * 0.02) * 0.03;
     stars.points.position.y = -scrollEase * 0.0025;
 
-    // emblem
+    // horizon breathes slowly and drifts with the path
+    (horizon.material as THREE.SpriteMaterial).opacity = horizonBase * (0.85 + Math.sin(t * 0.25) * 0.15);
+    horizon.position.x = Math.sin(t * 0.04) * 3;
+
+    // emblem (home hero only)
+    if (mode !== 'home') { renderer.render(scene, camera); return; }
     const g = emblem.group;
-    const fade = mode === 'home' ? 1 - THREE.MathUtils.smoothstep(heroP, 0.15, 0.7) : (mode === 'article' ? 0.55 : 0.8);
+    const fade = 1 - THREE.MathUtils.smoothstep(heroP, 0.1, 0.5);
     g.position.set(layout.x, layout.y + (mode === 'home' ? heroP * 2.6 : 0) + Math.sin(t * 0.6) * 0.06, mode === 'home' ? -heroP * 2 : 0);
     const breathe = 1 + Math.sin(t * 0.9) * 0.012;
     g.scale.setScalar(layout.s * breathe * (mode === 'home' ? 1 - heroP * 0.25 : 1));
@@ -452,7 +470,7 @@ export function startScene(canvas: HTMLCanvasElement) {
     (emblem.orbitB.material as THREE.LineDashedMaterial).opacity = 0.28 * fade;
     emblem.flareMat.uniforms.uOpacity.value = fade * (0.75 + Math.sin(t * 1.3) * 0.25);
     (emblem.glow.material as THREE.SpriteMaterial).opacity = 0.85 * fade;
-    g.visible = fade > 0.01 && (mode === 'home' || window.innerWidth > 920);
+    g.visible = fade > 0.01;
 
     glint.position.set(layout.x + Math.cos(t * 0.7) * 2.6, layout.y + Math.sin(t * 0.9) * 1.8, 2.4);
 
