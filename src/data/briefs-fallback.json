@@ -1,0 +1,27 @@
+{
+  "_note": "Used only if the live feed (https://entr.cc/enterprise/briefs/rss.xml) can't be reached at build time. Snapshot taken 2026-11-20.",
+  "items": [
+    {
+      "title": "Fourth-grade reading scores fell two points between 2022 and 2024",
+      "link": "https://entr.cc/enterprise/briefs/002-fourth-grade-reading/",
+      "date": "2026-11-19T00:00:00.000Z",
+      "description": "The national average declined on the Nation’s Report Card. The results also show why an average alone cannot describe every student’s experience.",
+      "categories": [
+        "Reading",
+        "NAEP",
+        "Education"
+      ]
+    },
+    {
+      "title": "22.9% of workers are in jobs requiring a license or certification",
+      "link": "https://entr.cc/enterprise/briefs/001-credentials-at-work/",
+      "date": "2026-11-13T00:00:00.000Z",
+      "description": "A national estimate shows how job requirements vary across occupations. It also leaves a key question open: which requirements come from government licensing rules?",
+      "categories": [
+        "Occupational licensing",
+        "Credentials",
+        "BLS"
+      ]
+    }
+  ]
+}
