@@ -27,11 +27,11 @@ const numberOf = (link: string) => link.match(/\/briefs\/(\d{3})-/)?.[1];
 // Sample/demo briefs stay off this site
 const isSample = (b: Brief) => /sample/i.test(b.link) || /^sample\b/i.test(b.title);
 
-function parse(xml: string): Brief[] {
+export function parseFeed(xml: string, linkPrefix: string): Brief[] {
   return [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/g)].map(([item]) => {
     const link = tag(item, 'link') || tag(item, 'guid');
     return { title: tag(item, 'title'), link, date: new Date(tag(item, 'pubDate')), description: tag(item, 'description'), categories: tags(item, 'category'), number: numberOf(link) };
-  }).filter((b) => b.title && b.link.startsWith(BRIEFS_HOME) && !Number.isNaN(b.date.valueOf()));
+  }).filter((b) => b.title && b.link.startsWith(linkPrefix) && !Number.isNaN(b.date.valueOf()));
 }
 
 let cache: Promise<Brief[]> | undefined;
@@ -40,7 +40,7 @@ export function getBriefs(limit = 4): Promise<Brief[]> {
     try {
       const res = await fetch(BRIEFS_FEED, { signal: AbortSignal.timeout(10000), headers: { 'User-Agent': 'notes.josephiesue.com build' } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const items = parse(await res.text());
+      const items = parseFeed(await res.text(), BRIEFS_HOME);
       if (!items.length) throw new Error('feed had no items');
       return items;
     } catch (error) {
