@@ -6,9 +6,10 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [enterprise-brief-published]
-  # Daily rebuild so new Enterprise Briefs from entr.cc appear on the home page (08:17 UTC = 16:17 Asia/Shanghai)
+  # Poll the Enterprise RSS feed so new briefs appear automatically even when
+  # cross-repository dispatch credentials are not configured.
   schedule:
-    - cron: '17 8 * * *'
+    - cron: '*/15 * * * *'
 
 permissions:
   contents: read
